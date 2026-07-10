@@ -1,0 +1,21 @@
+{
+  "name": "关注塔菲谢谢喵",
+  "short_name": "塔菲应援站",
+  "description": "永雏塔菲（Ace Taffy）粉丝应援站",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff5f7",
+  "theme_color": "#f06292",
+  "icons": [
+    {
+      "src": "./avatar.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "./avatar.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

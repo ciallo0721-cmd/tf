@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>关注塔菲谢谢喵 - 塔菲粉丝应援站</title>
     <meta name="description" content="关注塔菲谢谢喵，塔菲粉丝应援站。提供塔菲相关资讯、精彩内容和粉丝互动，欢迎关注支持！" />
+    <!-- OG 社交预览卡片 -->
+    <meta property="og:title" content="关注塔菲谢谢喵 - 塔菲粉丝应援站" />
+    <meta property="og:description" content="永雏塔菲（Ace Taffy）粉丝应援站 · 塔菲档案·活动历程·作品·百科" />
+    <meta property="og:image" content="https://xn--d6qr7hrtcb06avk0aljka.top/cover.webp" />
+    <meta property="og:url" content="https://xn--d6qr7hrtcb06avk0aljka.top/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="关注塔菲谢谢喵 - 塔菲粉丝应援站" />
+    <meta name="twitter:description" content="永雏塔菲（Ace Taffy）粉丝应援站 · 塔菲档案·活动历程·作品·百科" />
+    <meta name="twitter:image" content="https://xn--d6qr7hrtcb06avk0aljka.top/cover.webp" />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS8EP2CV6B">
     </script>
@@ -17,6 +28,8 @@
     </script>
     <link rel="icon" href="./avatar.webp" type="image/webp" />
     <link rel="shortcut icon" href="./avatar.webp" type="image/webp" />
+    <link rel="manifest" href="./manifest.json" />
+    <meta name="theme-color" content="#f06292" />
     <style>
         :root {
             --pink: #f06292;
@@ -520,6 +533,228 @@
                 font-size: 0.85rem;
             }
         }
+
+        /* ===== 增强功能样式 ===== */
+
+        /* 汉堡菜单 */
+        #nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 101;
+        }
+        #nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2.5px;
+            background: #7f5b80;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        @media (max-width: 640px) {
+            #nav-toggle {
+                display: flex !important;
+            }
+        }
+
+        /* 滚动进度条 */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--pink), var(--purple));
+            z-index: 99999;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        /* 返回顶部按钮 */
+        #back-to-top svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* 导航高亮 active */
+        .nav-inner a.active {
+            color: var(--pink-dark) !important;
+            font-weight: 700 !important;
+        }
+
+        /* Lightbox 图片点击放大 */
+        .cover-img,
+        .avatar img,
+        .section img[src*="xiaofei"] {
+            cursor: pointer;
+        }
+
+        /* 搜索框 */
+        .search-box {
+            position: relative;
+            margin-bottom: 32px;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 14px 18px 14px 44px;
+            border: 2px solid #fce4ec;
+            border-radius: 16px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .search-box input:focus {
+            border-color: var(--pink);
+        }
+        .search-box .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ccc;
+            font-size: 1.2rem;
+            pointer-events: none;
+        }
+        #search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(12px);
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            max-height: 320px;
+            overflow-y: auto;
+            display: none;
+            z-index: 50;
+            border: 2px solid #fce4ec;
+            border-top: none;
+        }
+        #search-results a {
+            display: block;
+            padding: 12px 18px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #fce4ec;
+            transition: background 0.2s;
+        }
+        #search-results a:last-child {
+            border-bottom: none;
+        }
+        #search-results a:hover {
+            background: #fce4ec;
+        }
+        #search-results .result-title {
+            font-weight: 600;
+            color: var(--pink-dark);
+        }
+        #search-results .result-preview {
+            color: #888;
+            font-size: 0.82rem;
+            margin-top: 2px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* 日程表卡片 */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+        .schedule-card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 16px;
+            box-shadow: 0 4px 16px rgba(240, 98, 146, 0.08);
+            text-align: center;
+        }
+        .schedule-card .s-date {
+            font-weight: 700;
+            color: var(--pink-dark);
+            font-size: 0.85rem;
+        }
+        .schedule-card .s-event {
+            font-size: 0.9rem;
+            margin-top: 4px;
+            color: #555;
+        }
+        .schedule-card .s-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--pink-light), #e1bee7);
+            color: var(--pink-dark);
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 2px 10px;
+            border-radius: 10px;
+            margin-top: 8px;
+        }
+
+        /* 应援留言板 */
+        #guestbook-list .gb-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 8px rgba(240, 98, 146, 0.06);
+        }
+        #guestbook-list .gb-item .gb-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+        #guestbook-list .gb-item .gb-author {
+            font-weight: 600;
+            color: var(--pink-dark);
+            font-size: 0.9rem;
+        }
+        #guestbook-list .gb-item .gb-date {
+            color: #aaa;
+            font-size: 0.78rem;
+        }
+        #guestbook-list .gb-item .gb-body {
+            font-size: 0.88rem;
+            color: #555;
+        }
+        .gb-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 24px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            text-decoration: none;
+        }
+        .gb-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Giscus 评论区 */
+        .giscus-wrapper {
+            margin-top: 20px;
+            min-height: 200px;
+        }
+
+        /* 入场动画初始状态 */
+        .section,
+        .hero {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
     </style>
 </head>
 <body>
@@ -551,7 +786,7 @@
     </nav>
 
     <section class="hero" id="top">
-        <img class="cover-img" src="./cover.webp" alt="永雏塔菲">
+        <img class="cover-img" src="./cover.webp" alt="永雏塔菲" loading="lazy">
         <h1>永雏塔菲</h1>
         <div class="domain">关注塔菲谢谢喵.top</div>
         <p class="sub">
@@ -564,10 +799,17 @@
 
     <div class="container">
 
+        <!-- 搜索栏 -->
+        <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="search-input" placeholder="搜索站内内容…" autocomplete="off">
+            <div id="search-results"></div>
+        </div>
+
         <div class="section" id="profile">
             <div class="section-title">塔菲档案</div>
             <div class="profile-card">
-                <div class="avatar"><img src="./avatar.webp" alt="永雏塔菲头像"></div>
+                <div class="avatar"><img src="./avatar.webp" alt="永雏塔菲头像" loading="lazy"></div>
                 <div class="info">
                     <h2>永雏塔菲 <span style="font-weight:400;font-size:0.9rem;color:#888;">Ace Taffy</span></h2>
                     <div class="alias">别名：臭粉毛 · 菲菲公主 · 王牌发明家 · 大菲柱</div>
@@ -596,7 +838,7 @@
         <div class="section">
             <div class="section-title">小菲</div>
             <div style="text-align:center;">
-                <img src="./xiaofei.webp" alt="永雏小菲" style="width:clamp(180px,30vw,280px);border-radius:20px;box-shadow:0 8px 32px rgba(240,98,146,0.15);">
+                <img src="./xiaofei.webp" alt="永雏小菲" loading="lazy" style="width:clamp(180px,30vw,280px);border-radius:20px;box-shadow:0 8px 32px rgba(240,98,146,0.15);">
                 <p style="margin-top:12px;color:#888;font-size:0.9rem;">永雏小菲 · 郊游连衣裙</p>
             </div>
         </div>
@@ -1067,6 +1309,38 @@
         </div>
         <!-- ========== 2025游戏总结结束 ========== -->
 
+        <!-- 塔菲日程表 -->
+        <div class="section" id="schedule">
+            <div class="section-title">塔菲日程</div>
+            <div class="schedule-grid">
+                <div class="schedule-card">
+                    <div class="s-date">8月12日</div>
+                    <div class="s-event">🎂 塔菲生日</div>
+                    <span class="s-tag">每年</span>
+                </div>
+                <div class="schedule-card">
+                    <div class="s-date">6月26日</div>
+                    <div class="s-event">🎉 出道纪念日</div>
+                    <span class="s-tag">每年</span>
+                </div>
+                <div class="schedule-card">
+                    <div class="s-date">2月14日</div>
+                    <div class="s-event">💕 情人节歌回</div>
+                    <span class="s-tag">预计</span>
+                </div>
+                <div class="schedule-card">
+                    <div class="s-date">12月31日</div>
+                    <div class="s-event">🎊 跨年直播</div>
+                    <span class="s-tag">预计</span>
+                </div>
+                <div class="schedule-card" style="border:2px dashed var(--pink-light);">
+                    <div class="s-date">?</div>
+                    <div class="s-event">✨ 更多活动待定</div>
+                    <span class="s-tag">关注B站动态</span>
+                </div>
+            </div>
+        </div>
+
         <div class="section">
             <div class="quote-block">
                 "塔不灭塔不灭塔不灭！"
@@ -1107,6 +1381,20 @@
             </div>
         </div>
 
+        <!-- ===== 应援留言板 ===== -->
+        <div class="section" id="guestbook">
+            <div class="section-title">💬 应援留言板</div>
+            <div style="background:var(--card-bg);border-radius:20px;padding:24px;box-shadow:0 8px 32px rgba(240,98,146,0.08);">
+                <div id="guestbook-list"></div>
+                <div style="text-align:center;margin-top:16px;">
+                    <a class="gb-btn" href="https://github.com/ciallo0721-cmd/tf/issues/new?labels=应援留言&title=💐 我想说..." target="_blank">
+                        ✏️ 发表应援留言
+                    </a>
+                    <p style="margin-top:8px;font-size:0.8rem;color:#aaa;">通过 GitHub Issues 提交，需要 GitHub 账号</p>
+                </div>
+            </div>
+        </div>
+
         <!-- ========== 免责与版权声明 ========== -->
         <div class="section" id="disclaimer">
             <div class="section-title">免责与版权声明</div>
@@ -1127,42 +1415,146 @@
         </div>
         <!-- ========== 免责结束 ========== -->
 
+        <!-- ===== Giscus 评论区 ===== -->
+        <div class="section" id="comments">
+            <div class="section-title">💬 评论区</div>
+            <div class="giscus-wrapper">
+                <div id="giscus-container"></div>
+            </div>
+        </div>
+
     </div>
 
     <footer>
         关注塔菲谢谢喵 雏草姬应援站<br>
         本站与永雏塔菲无直接关联 · 粉丝自建 · 信息源自萌娘百科<br>
-        站长：ciallo0721-cmd · 仓库：<a href="https://github.com/ciallo0721-cmd/tf" target="_blank">GitHub</a>
+        &copy; <span id="year">2026</span> · 站长：ciallo0721-cmd · 仓库：<a href="https://github.com/ciallo0721-cmd/tf" target="_blank">GitHub</a>
     </footer>
 
-    <script>
-        const bgm = document.getElementById("bgm");
-        const btn = document.getElementById("audio-btn");
-        let isPlaying = false;
+    <script src="./assets/enhanced.js"></script>
 
-        function toggleAudio() {
-            if (isPlaying) {
-                bgm.pause();
-                btn.classList.remove("playing");
-                btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
-            } else {
-                bgm.play().then(() => {
-                    btn.classList.add("playing");
-                    btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
-                }).catch(() => {});
-            }
-            isPlaying = !isPlaying;
+    <!-- ===== Giscus 评论区脚本 ===== -->
+    <script>
+        (function initGiscus() {
+            var container = document.getElementById('giscus-container');
+            if (!container) return;
+            var script = document.createElement('script');
+            script.src = 'https://giscus.app/client.js';
+            script.setAttribute('data-repo', 'ciallo0721-cmd/tf');
+            script.setAttribute('data-repo-id', 'R_kgDOTF-j4g');
+            script.setAttribute('data-category', 'Announcements');
+            script.setAttribute('data-category-id', 'DIC_kwDOTF-j4s4DA5Y5');
+            script.setAttribute('data-mapping', 'pathname');
+            script.setAttribute('data-strict', '0');
+            script.setAttribute('data-reactions-enabled', '1');
+            script.setAttribute('data-emit-metadata', '0');
+            script.setAttribute('data-input-position', 'bottom');
+            script.setAttribute('data-theme', 'light');
+            script.setAttribute('data-lang', 'zh-CN');
+            script.setAttribute('crossorigin', 'anonymous');
+            script.async = true;
+            container.appendChild(script);
+        })();
+    </script>
+
+    <!-- ===== PWA Service Worker 注册 ===== -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('./sw.js').then(function (reg) {
+                    console.log('PWA: Service Worker 注册成功', reg.scope);
+                }).catch(function (err) {
+                    console.log('PWA: Service Worker 注册失败', err);
+                });
+            });
         }
-        document.addEventListener("click", function firstClick() {
-            if (!isPlaying) {
-                bgm.play().then(() => {
-                    isPlaying = true;
-                    btn.classList.add("playing");
-                    btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
-                }).catch(() => {});
+    </script>
+
+    <!-- ===== 站内搜索脚本 ===== -->
+    <script>
+        (function () {
+            var input = document.getElementById('search-input');
+            var results = document.getElementById('search-results');
+            if (!input || !results) return;
+
+            input.addEventListener('input', function () {
+                var query = input.value.trim().toLowerCase();
+                if (!query || query.length < 1) {
+                    results.style.display = 'none';
+                    return;
+                }
+
+                // Use Fuse if available
+                if (window.__fuse) {
+                    var fuseResults = window.__fuse.search(query);
+                    if (fuseResults.length === 0) {
+                        results.innerHTML = '<a style="color:#aaa;cursor:default;">没有找到相关内容</a>';
+                        results.style.display = 'block';
+                        return;
+                    }
+                    var html = '';
+                    fuseResults.slice(0, 10).forEach(function (r) {
+                        var item = r.item;
+                        var title = item.title + (item.id ? ' - ' + item.id : '');
+                        var preview = item.text.substring(0, 80);
+                        var href = item.id ? '#' + item.id : '#';
+                        html += '<a href="' + href + '">' +
+                            '<div class="result-title">' + escapeSearch(item.title) + '</div>' +
+                            '<div class="result-preview">' + escapeSearch(preview) + '</div>' +
+                            '</a>';
+                    });
+                    results.innerHTML = html;
+                    results.style.display = 'block';
+                } else {
+                    // Fallback: basic local search
+                    var data = window.__searchData || [];
+                    var matches = [];
+                    data.forEach(function (item) {
+                        if (item.title.toLowerCase().indexOf(query) !== -1 ||
+                            item.text.toLowerCase().indexOf(query) !== -1) {
+                            matches.push(item);
+                        }
+                    });
+                    if (matches.length === 0) {
+                        results.innerHTML = '<a style="color:#aaa;cursor:default;">没有找到相关内容</a>';
+                        results.style.display = 'block';
+                        return;
+                    }
+                    var html = '';
+                    matches.slice(0, 10).forEach(function (item) {
+                        var href = item.id ? '#' + item.id : '#';
+                        html += '<a href="' + href + '">' +
+                            '<div class="result-title">' + escapeSearch(item.title) + '</div>' +
+                            '<div class="result-preview">' + escapeSearch(item.text.substring(0, 80)) + '</div>' +
+                            '</a>';
+                    });
+                    results.innerHTML = html;
+                    results.style.display = 'block';
+                }
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!input.contains(e.target) && !results.contains(e.target)) {
+                    results.style.display = 'none';
+                }
+            });
+
+            // Click result to close and scroll
+            results.addEventListener('click', function (e) {
+                var link = e.target.closest('a');
+                if (link && link.getAttribute('href') !== '#') {
+                    results.style.display = 'none';
+                    input.value = '';
+                }
+            });
+
+            function escapeSearch(text) {
+                if (!text) return '';
+                var d = document.createElement('div');
+                d.textContent = text;
+                return d.innerHTML;
             }
-            document.removeEventListener("click", firstClick);
-        }, { once: true });
+        })();
     </script>
 </body>
 </html>
