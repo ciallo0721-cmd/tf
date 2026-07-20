@@ -410,56 +410,8 @@
     })();
 
     // ============================================================
-    // 13. 塔菲直播状态看板
+    // 13. 塔菲直播状态看板（已移除）
     // ============================================================
-    (function liveStatus() {
-        var nav = document.querySelector('.nav-inner');
-        if (!nav) return;
-
-        var badge = document.createElement('span');
-        badge.id = 'live-status';
-        badge.style.cssText =
-            'display:inline-flex;align-items:center;gap:4px;font-size:0.78rem;font-weight:600;padding:2px 10px;border-radius:12px;margin-left:auto;flex-shrink:0;';
-        badge.innerHTML = '<span style="width:8px;height:8px;border-radius:50%;background:#ccc;display:inline-block;"></span> 查询中...';
-        nav.appendChild(badge);
-
-        function checkLive() {
-            var xhr = new XMLHttpRequest();
-            xhr.timeout = 5000;
-            xhr.onload = function () {
-                try {
-                    var data = JSON.parse(xhr.responseText);
-                    if (data && data.data && data.data.live_status === 1) {
-                        badge.innerHTML =
-                            '<span style="width:8px;height:8px;border-radius:50%;background:#ff1744;display:inline-block;animation:pulse 1.5s infinite;"></span> 直播中';
-                        badge.style.background = 'rgba(255,23,68,0.12)';
-                        badge.style.color = '#d50000';
-                    } else {
-                        badge.innerHTML =
-                            '<span style="width:8px;height:8px;border-radius:50%;background:#aaa;display:inline-block;"></span> 未开播';
-                        badge.style.background = 'rgba(0,0,0,0.05)';
-                        badge.style.color = '#888';
-                    }
-                } catch (e) {
-                    badge.innerHTML =
-                        '<span style="width:8px;height:8px;border-radius:50%;background:#aaa;display:inline-block;"></span> 未知';
-                    badge.style.background = 'rgba(0,0,0,0.05)';
-                    badge.style.color = '#888';
-                }
-            };
-            xhr.onerror = function () {
-                badge.innerHTML =
-                    '<span style="width:8px;height:8px;border-radius:50%;background:#aaa;display:inline-block;"></span> 离线';
-                badge.style.background = 'rgba(0,0,0,0.05)';
-                badge.style.color = '#888';
-            };
-            xhr.open('GET', 'https://api.live.bilibili.com/room/v1/Room/getRoomInfoOld?roomid=22603245', true);
-            xhr.send();
-        }
-
-        checkLive();
-        setInterval(checkLive, 120000); // Check every 2 minutes
-    })();
 
     // ============================================================
     // 22. 站内搜索 (Fuse.js via CDN)
