@@ -1,0 +1,14 @@
+# 工作区元数据（不纳入版本控制）
+.workbuddy/
+
+# 系统 / 编辑器
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# 临时文件
+*.log
+*.tmp
+_preview.html

@@ -1,1443 +1,1422 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
+
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>关注塔菲谢谢喵 - 塔菲粉丝应援站</title>
-    <meta name="description" content="关注塔菲谢谢喵，塔菲粉丝应援站。提供塔菲相关资讯、精彩内容和粉丝互动，欢迎关注支持！" />
-    <!-- OG 社交预览卡片 -->
-    <meta property="og:title" content="关注塔菲谢谢喵 - 塔菲粉丝应援站" />
-    <meta property="og:description" content="永雏塔菲（Ace Taffy）粉丝应援站 · 塔菲档案·活动历程·作品·百科" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>关注塔菲谢谢喵 · 永雏塔菲粉丝应援站</title>
+    <meta name="description" content="永雏塔菲（Ace Taffy）粉丝应援站。塔菲档案、活动历程、原创作品、游戏记录与全平台链接，雏草姬的应援据点。" />
+    <meta name="author" content="ciallo0721-cmd" />
+    <meta name="keywords" content="永雏塔菲,Ace Taffy,雏草姬,塔菲,关注塔菲谢谢喵,VTuber,虚拟偶像" />
+
+    <!-- 社交预览卡片 -->
+    <meta property="og:title" content="关注塔菲谢谢喵 · 永雏塔菲粉丝应援站" />
+    <meta property="og:description" content="来自 1868 年威尔士的王牌侦探发明家 · 塔菲档案 · 活动历程 · 作品 · 百科" />
     <meta property="og:image" content="https://xn--d6qr7hrtcb06avk0aljka.top/cover.webp" />
     <meta property="og:url" content="https://xn--d6qr7hrtcb06avk0aljka.top/" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="zh_CN" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="关注塔菲谢谢喵 - 塔菲粉丝应援站" />
-    <meta name="twitter:description" content="永雏塔菲（Ace Taffy）粉丝应援站 · 塔菲档案·活动历程·作品·百科" />
+    <meta name="twitter:title" content="关注塔菲谢谢喵 · 永雏塔菲粉丝应援站" />
+    <meta name="twitter:description" content="来自 1868 年威尔士的王牌侦探发明家 · 塔菲档案 · 活动历程 · 作品 · 百科" />
     <meta name="twitter:image" content="https://xn--d6qr7hrtcb06avk0aljka.top/cover.webp" />
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS8EP2CV6B">
+
+    <!-- 主题色（跟随系统明暗） -->
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+
+    <link rel="icon" href="./avatar.webp" type="image/webp" />
+    <link rel="shortcut icon" href="./avatar.webp" type="image/webp" />
+    <link rel="apple-touch-icon" href="./avatar.webp" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="canonical" href="https://xn--d6qr7hrtcb06avk0aljka.top/" />
+
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preload" as="image" href="./cover.webp" fetchpriority="high" />
+    <link rel="stylesheet" href="./assets/style.css" />
+
+    <!-- 防闪烁：在解析前就确定主题 -->
+    <script>
+        (function () {
+            document.documentElement.classList.add('js');
+            try {
+                var saved = localStorage.getItem('taffy-theme');
+                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+            } catch (e) { }
+        })();
     </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS8EP2CV6B"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-CS8EP2CV6B');
     </script>
-    <link rel="icon" href="./avatar.webp" type="image/webp" />
-    <link rel="shortcut icon" href="./avatar.webp" type="image/webp" />
-    <link rel="manifest" href="./manifest.json" />
-    <meta name="theme-color" content="#f06292" />
-    <style>
-        :root {
-            --pink: #f06292;
-            --pink-light: #f8bbd0;
-            --pink-dark: #d81b60;
-            --purple: #9c27b0;
-            --bg: #fff5f7;
-            --text: #2d1b2e;
-            --card-bg: rgba(255, 255, 255, 0.88);
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: "Noto Sans SC", -apple-system, sans-serif;
-            background: url('./Taffy_illust.png') no-repeat center top fixed;
-            background-size: cover;
-            color: var(--text);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 245, 247, 0.88);
-            z-index: -1;
-        }
-        a {
-            color: var(--pink-dark);
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid #fce4ec;
-            padding: 10px 0;
-        }
-        .nav-inner {
-            max-width: 880px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            gap: 18px;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-        .nav-inner a {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #7f5b80;
-        }
-        .nav-inner a:hover {
-            color: var(--pink-dark);
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(252, 228, 236, 0.95) 0%, rgba(243, 229, 245, 0.9) 30%, rgba(232, 234, 246, 0.85) 60%, rgba(255, 245, 247, 0.95) 100%);
-            text-align: center;
-            padding: 80px 20px 60px;
-            position: relative;
-        }
-        .hero .cover-img {
-            width: clamp(200px, 35vw, 340px);
-            border-radius: 24px;
-            box-shadow: 0 12px 48px rgba(240, 98, 146, 0.3);
-            margin-bottom: 28px;
-            object-fit: cover;
-        }
-        .hero h1 {
-            font-size: clamp(2rem, 6vw, 4.5rem);
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--pink-dark), var(--pink), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
-            line-height: 1.2;
-        }
-        .hero .domain {
-            font-size: clamp(1rem, 3vw, 1.8rem);
-            font-weight: 700;
-            color: var(--pink-dark);
-            margin-bottom: 16px;
-            letter-spacing: 2px;
-        }
-        .hero .sub {
-            font-size: clamp(0.95rem, 2vw, 1.25rem);
-            color: #7f5b80;
-            max-width: 650px;
-            margin-bottom: 32px;
-        }
-        .hero .scroll-hint {
-            position: absolute;
-            bottom: 32px;
-            font-size: 14px;
-            color: #b08cb0;
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(8px);
-            }
-        }
-
-        .container {
-            max-width: 880px;
-            margin: 0 auto;
-            padding: 60px 24px;
-        }
-
-        .section {
-            margin-bottom: 64px;
-        }
-        .section-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--pink-dark);
-            margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .section-title::after {
-            content: "";
-            flex: 1;
-            height: 2px;
-            background: linear-gradient(90deg, var(--pink-light), transparent);
-        }
-
-        .profile-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 32px;
-            box-shadow: 0 8px 32px rgba(240, 98, 146, 0.12);
-            backdrop-filter: blur(8px);
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 28px;
-            align-items: start;
-        }
-        .avatar {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(240, 98, 146, 0.25);
-            border: 4px solid rgba(255, 255, 255, 0.8);
-        }
-        .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .profile-card .info h2 {
-            font-size: 1.6rem;
-            margin-bottom: 4px;
-        }
-        .profile-card .info .alias {
-            color: #888;
-            font-size: 0.9rem;
-            margin-bottom: 12px;
-        }
-        .profile-card .info table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.95rem;
-        }
-        .profile-card .info table td {
-            padding: 5px 0;
-            vertical-align: top;
-        }
-        .profile-card .info table td:first-child {
-            width: 100px;
-            color: #888;
-            font-weight: 500;
-        }
-
-        .story {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 32px;
-            box-shadow: 0 8px 32px rgba(240, 98, 146, 0.08);
-            line-height: 1.9;
-            font-size: 1.05rem;
-        }
-        .story p {
-            margin-bottom: 16px;
-        }
-
-        .timeline {
-            position: relative;
-            padding-left: 32px;
-        }
-        .timeline::before {
-            content: "";
-            position: absolute;
-            left: 12px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, var(--pink-light), var(--purple));
-            border-radius: 2px;
-        }
-        .tl-item {
-            position: relative;
-            margin-bottom: 20px;
-            background: var(--card-bg);
-            border-radius: 14px;
-            padding: 14px 18px;
-            box-shadow: 0 4px 16px rgba(240, 98, 146, 0.08);
-            font-size: 0.93rem;
-        }
-        .tl-item .date {
-            font-weight: 700;
-            color: var(--pink-dark);
-            font-size: 0.85rem;
-            margin-bottom: 4px;
-        }
-        .tl-item .desc ul {
-            margin: 4px 0 0 18px;
-        }
-        .tl-item .desc ul li {
-            margin-bottom: 2px;
-        }
-
-        .facts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-        }
-        .fact-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 4px 16px rgba(240, 98, 146, 0.08);
-            text-align: center;
-            transition: transform .2s;
-        }
-        .fact-card:hover {
-            transform: translateY(-4px);
-        }
-        .fact-card .label {
-            font-weight: 700;
-            font-size: 0.85rem;
-            color: var(--pink-dark);
-            margin-bottom: 4px;
-        }
-        .fact-card .value {
-            font-size: 0.95rem;
-            color: #555;
-        }
-
-        .collapsible {
-            background: var(--card-bg);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 16px rgba(240, 98, 146, 0.08);
-            margin-bottom: 16px;
-        }
-        .collapsible summary {
-            padding: 16px 20px;
-            font-weight: 700;
-            cursor: pointer;
-            background: linear-gradient(135deg, #fce4ec, #f3e5f5);
-            color: var(--pink-dark);
-            outline: none;
-            user-select: none;
-        }
-        .collapsible summary::-webkit-details-marker {
-            display: none;
-        }
-        .collapsible summary::before {
-            content: ">";
-            font-size: 0.7rem;
-            margin-right: 6px;
-            display: inline-block;
-            transition: transform .2s;
-        }
-        .collapsible[open] summary::before {
-            transform: rotate(90deg);
-        }
-        .collapsible .body {
-            padding: 16px 20px;
-            font-size: 0.93rem;
-            line-height: 1.8;
-        }
-        .collapsible .body ul {
-            margin-left: 18px;
-        }
-        .collapsible .body ul li {
-            margin-bottom: 4px;
-        }
-
-        .song-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9rem;
-            background: var(--card-bg);
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 4px 16px rgba(240, 98, 146, 0.08);
-        }
-        .song-table thead th {
-            background: linear-gradient(135deg, #fce4ec, #f3e5f5);
-            padding: 12px 14px;
-            text-align: left;
-            color: var(--pink-dark);
-            font-weight: 700;
-        }
-        .song-table td {
-            padding: 10px 14px;
-            border-top: 1px solid #fce4ec;
-        }
-
-        .quote-block {
-            background: linear-gradient(135deg, #fce4ec, #f3e5f5);
-            border-radius: 20px;
-            padding: 36px 32px;
-            text-align: center;
-            font-style: italic;
-            font-size: 1.15rem;
-            color: #5a3d5b;
-            box-shadow: 0 4px 16px rgba(240, 98, 146, 0.12);
-        }
-        .quote-block .author {
-            display: block;
-            margin-top: 12px;
-            font-style: normal;
-            font-weight: 500;
-            color: var(--pink-dark);
-            font-size: 0.9rem;
-        }
-
-        .link-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 12px;
-        }
-        .link-card {
-            background: var(--card-bg);
-            border-radius: 14px;
-            padding: 14px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(240, 98, 146, 0.08);
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: transform .2s;
-        }
-        .link-card:hover {
-            transform: translateY(-2px);
-        }
-
-        footer {
-            text-align: center;
-            padding: 32px 24px;
-            color: #b08cb0;
-            font-size: 0.85rem;
-        }
-        footer .heart {
-            color: var(--pink);
-        }
-
-        #audio-player {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            z-index: 9999;
-        }
-        #audio-btn {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            border: none;
-            background: linear-gradient(135deg, var(--pink), var(--purple));
-            color: #fff;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 4px 16px rgba(240, 98, 146, 0.4);
-            transition: all .3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        #audio-btn:hover {
-            transform: scale(1.1);
-        }
-        #audio-btn.playing {
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%,
-            100% {
-                box-shadow: 0 4px 16px rgba(240, 98, 146, 0.4);
-            }
-            50% {
-                box-shadow: 0 4px 28px rgba(240, 98, 146, 0.7);
-            }
-        }
-        #audio-btn svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-        }
-
-        .game-list {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        .game-list .game-item {
-            display: flex;
-            gap: 12px;
-            padding: 4px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-            font-size: 0.92rem;
-        }
-        .game-list .game-item .gdate {
-            font-weight: 600;
-            color: var(--pink-dark);
-            flex-shrink: 0;
-            width: 62px;
-        }
-        .game-list .game-item .gname {
-            color: #333;
-        }
-        .game-list .game-item .gname .flower {
-            color: #e91e63;
-            margin-right: 2px;
-        }
-        .game-list .game-item .gname .eng {
-            color: #999;
-            font-size: 0.85rem;
-            margin-left: 4px;
-        }
-
-        .warning-badge {
-            display: inline-block;
-            background: #ff1744;
-            color: #fff;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 1px 8px;
-            border-radius: 12px;
-            margin-left: 6px;
-        }
-
-        @media (max-width: 640px) {
-            .profile-card {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .profile-card .avatar {
-                margin: 0 auto;
-                width: 140px;
-                height: 140px;
-            }
-            .profile-card .info table td:first-child {
-                width: 80px;
-            }
-            .container {
-                padding: 40px 16px;
-            }
-            #audio-btn {
-                width: 48px;
-                height: 48px;
-                font-size: 20px;
-            }
-            #audio-player {
-                bottom: 16px;
-                right: 16px;
-            }
-            .game-list .game-item {
-                flex-wrap: wrap;
-                gap: 2px;
-            }
-            .game-list .game-item .gdate {
-                width: 56px;
-                font-size: 0.85rem;
-            }
-        }
-
-        /* ===== 增强功能样式 ===== */
-
-        /* 汉堡菜单 */
-        #nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-            flex-direction: column;
-            gap: 5px;
-            z-index: 101;
-        }
-        #nav-toggle span {
-            display: block;
-            width: 24px;
-            height: 2.5px;
-            background: #7f5b80;
-            border-radius: 2px;
-            transition: all 0.3s;
-        }
-        @media (max-width: 640px) {
-            #nav-toggle {
-                display: flex !important;
-            }
-        }
-
-        /* 滚动进度条 */
-        #scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--pink), var(--purple));
-            z-index: 99999;
-            width: 0%;
-            transition: width 0.1s ease;
-        }
-
-        /* 返回顶部按钮 */
-        #back-to-top svg {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-        }
-
-        /* 导航高亮 active */
-        .nav-inner a.active {
-            color: var(--pink-dark) !important;
-            font-weight: 700 !important;
-        }
-
-        /* Lightbox 图片点击放大 */
-        .cover-img,
-        .avatar img,
-        .section img[src*="xiaofei"] {
-            cursor: pointer;
-        }
-
-        /* 搜索框 */
-        .search-box {
-            position: relative;
-            margin-bottom: 32px;
-        }
-        .search-box input {
-            width: 100%;
-            padding: 14px 18px 14px 44px;
-            border: 2px solid #fce4ec;
-            border-radius: 16px;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(8px);
-            outline: none;
-            transition: border-color 0.3s;
-        }
-        .search-box input:focus {
-            border-color: var(--pink);
-        }
-        .search-box .search-icon {
-            position: absolute;
-            left: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #ccc;
-            font-size: 1.2rem;
-            pointer-events: none;
-        }
-        #search-results {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.97);
-            backdrop-filter: blur(12px);
-            border-radius: 0 0 16px 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            max-height: 320px;
-            overflow-y: auto;
-            display: none;
-            z-index: 50;
-            border: 2px solid #fce4ec;
-            border-top: none;
-        }
-        #search-results a {
-            display: block;
-            padding: 12px 18px;
-            color: var(--text);
-            text-decoration: none;
-            font-size: 0.9rem;
-            border-bottom: 1px solid #fce4ec;
-            transition: background 0.2s;
-        }
-        #search-results a:last-child {
-            border-bottom: none;
-        }
-        #search-results a:hover {
-            background: #fce4ec;
-        }
-        #search-results .result-title {
-            font-weight: 600;
-            color: var(--pink-dark);
-        }
-        #search-results .result-preview {
-            color: #888;
-            font-size: 0.82rem;
-            margin-top: 2px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        /* 日程表卡片 */
-        .schedule-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-        }
-        .schedule-card {
-            background: var(--card-bg);
-            border-radius: 14px;
-            padding: 16px;
-            box-shadow: 0 4px 16px rgba(240, 98, 146, 0.08);
-            text-align: center;
-        }
-        .schedule-card .s-date {
-            font-weight: 700;
-            color: var(--pink-dark);
-            font-size: 0.85rem;
-        }
-        .schedule-card .s-event {
-            font-size: 0.9rem;
-            margin-top: 4px;
-            color: #555;
-        }
-        .schedule-card .s-tag {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--pink-light), #e1bee7);
-            color: var(--pink-dark);
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 2px 10px;
-            border-radius: 10px;
-            margin-top: 8px;
-        }
-
-        /* 应援留言板 */
-        #guestbook-list .gb-item {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 14px 16px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 8px rgba(240, 98, 146, 0.06);
-        }
-        #guestbook-list .gb-item .gb-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 4px;
-        }
-        #guestbook-list .gb-item .gb-author {
-            font-weight: 600;
-            color: var(--pink-dark);
-            font-size: 0.9rem;
-        }
-        #guestbook-list .gb-item .gb-date {
-            color: #aaa;
-            font-size: 0.78rem;
-        }
-        #guestbook-list .gb-item .gb-body {
-            font-size: 0.88rem;
-            color: #555;
-        }
-        .gb-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--pink), var(--purple));
-            color: #fff;
-            border: none;
-            border-radius: 20px;
-            padding: 10px 24px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s;
-            text-decoration: none;
-        }
-        .gb-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Giscus 评论区 */
-        .giscus-wrapper {
-            margin-top: 20px;
-            min-height: 200px;
-        }
-
-        /* 入场动画初始状态 */
-        .section,
-        .hero {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-    </style>
 </head>
-<body>
 
-    <audio id="bgm" loop preload="auto">
-        <source src="./gztfxxm.MP3" type="audio/mpeg">
-        您的浏览器不支持音频播放
-    </audio>
-    <div id="audio-player">
-        <button id="audio-btn" onclick="toggleAudio()" title="播放/暂停">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        </button>
+<body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+
+    <!-- ================= 背景层 ================= -->
+    <div class="bg-layer" aria-hidden="true">
+        <div class="bg-mesh"></div>
+        <div class="bg-grid"></div>
+        <div class="bg-orb orb-1"></div>
+        <div class="bg-orb orb-2"></div>
+        <div class="bg-orb orb-3"></div>
+        <div class="bg-noise"></div>
     </div>
 
-    <nav>
-        <div class="nav-inner">
-            <a href="#top">首页</a>
-            <a href="#profile">档案</a>
-            <a href="#story">故事</a>
-            <a href="#timeline">历程</a>
-            <a href="#facts">百科</a>
-            <a href="#trivia">趣闻</a>
-            <a href="#songs">作品</a>
-            <a href="#achievements">成就</a>
-            <a href="#games2025">2025游戏</a>
-            <a href="#links">链接</a>
-            <a href="#disclaimer">免责</a>
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- ================= 导航 ================= -->
+    <header class="nav" id="nav">
+        <div class="nav__inner">
+            <a class="nav__brand" href="#top">
+                <span class="nav__mark" aria-hidden="true">菲</span>
+                <span>关注塔菲谢谢喵</span>
+            </a>
+
+            <nav class="nav__links" id="navLinks" aria-label="站内导航">
+                <span class="nav__pill" id="navPill" aria-hidden="true"></span>
+                <a href="#profile">档案</a>
+                <a href="#story">故事</a>
+                <a href="#timeline">历程</a>
+                <a href="#facts">百科</a>
+                <a href="#trivia">趣闻</a>
+                <a href="#songs">作品</a>
+                <a href="#achievements">成就</a>
+                <a href="#games2025">游戏</a>
+                <a href="#schedule">日程</a>
+                <a href="#links">链接</a>
+            </nav>
+
+            <div class="nav__tools">
+                <button class="nav__search" id="paletteOpen" aria-label="搜索站内内容">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7" />
+                        <path d="M20 20l-3.5-3.5" />
+                    </svg>
+                    <span>搜索</span>
+                    <kbd id="kbdHint">Ctrl K</kbd>
+                </button>
+                <button class="icon-btn" id="themeToggle" aria-label="切换深浅色模式" title="切换主题">
+                    <svg viewBox="0 0 24 24" id="themeIcon" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4.2" />
+                        <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4" />
+                    </svg>
+                </button>
+                <button class="nav__toggle" id="navToggle" aria-label="展开菜单" aria-expanded="false" aria-controls="navSheet">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
+    </header>
+
+    <!-- 移动端抽屉 -->
+    <nav class="nav__sheet" id="navSheet" aria-label="移动端导航">
+        <a href="#top">首页</a>
+        <a href="#profile">塔菲档案</a>
+        <a href="#story">塔菲的故事</a>
+        <a href="#settings">设定补充</a>
+        <a href="#timeline">活动历程</a>
+        <a href="#facts">塔菲小百科</a>
+        <a href="#trivia">趣闻</a>
+        <a href="#songs">作品</a>
+        <a href="#achievements">成就墙</a>
+        <a href="#games2025">2025 游戏总结</a>
+        <a href="#schedule">塔菲日程</a>
+        <a href="#links">全平台链接</a>
+        <a href="#guestbook">应援留言板</a>
+        <a href="#comments">评论区</a>
+        <a href="#disclaimer">免责声明</a>
     </nav>
 
-    <section class="hero" id="top">
-        <img class="cover-img" src="./cover.webp" alt="永雏塔菲" loading="lazy">
-        <h1>永雏塔菲</h1>
-        <div class="domain">关注塔菲谢谢喵.top</div>
-        <p class="sub">
-            王牌侦探发明家 · 个人势虚拟偶像<br>
-            来自 1868 年威尔士，乘时光机穿越到现代<br>
-            永远的 17 岁——沉迷电子游戏不想回去了
-        </p>
-        <div class="scroll-hint">往下了解塔菲</div>
-    </section>
+    <main id="main">
 
-    <div class="container">
+        <!-- ================= HERO ================= -->
+        <section class="hero" id="top">
+            <div class="hero__inner">
+                <p class="hero__badge">
+                    <b>个人势</b>
+                    <i aria-hidden="true"></i>
+                    2021 年 6 月出道 · 雏草姬应援站
+                </p>
 
-        <!-- 搜索栏 -->
-        <div class="search-box">
-            <span class="search-icon">🔍</span>
-            <input type="text" id="search-input" placeholder="搜索站内内容…" autocomplete="off">
-            <div id="search-results"></div>
-        </div>
+                <h1 class="hero__title">
+                    永雏<em>塔菲</em>
+                    <span>ACE TAFFY</span>
+                </h1>
 
-        <div class="section" id="profile">
-            <div class="section-title">塔菲档案</div>
-            <div class="profile-card">
-                <div class="avatar"><img src="./avatar.webp" alt="永雏塔菲头像" loading="lazy"></div>
-                <div class="info">
-                    <h2>永雏塔菲 <span style="font-weight:400;font-size:0.9rem;color:#888;">Ace Taffy</span></h2>
-                    <div class="alias">别名：臭粉毛 · 菲菲公主 · 王牌发明家 · 大菲柱</div>
-                    <table>
-                        <tr><td>本名</td><td>永雏塔菲（永雛タフィー / Ace Taffy）</td></tr>
-                        <tr><td>生日</td><td>1868年8月12日（自称永远17岁）</td></tr>
-                        <tr><td>出身</td><td>威尔士 · 1885年穿越至现代</td></tr>
-                        <tr><td>身高</td><td>148cm（含呆毛）</td></tr>
-                        <tr><td>体重</td><td>80斤不到（本人语）</td></tr>
-                        <tr><td>发色瞳色</td><td>粉发 · 金瞳</td></tr>
-                        <tr><td>形象设计</td><td>神乐七奈（nanakagura）</td></tr>
-                        <tr><td>Live2D模型</td><td>千铃SR</td></tr>
-                        <tr><td>粉丝名</td><td>雏草姬</td></tr>
-                        <tr><td>代表符号</td><td>四叶草</td></tr>
-                        <tr><td>吉祥物</td><td>菲球（小球球）</td></tr>
-                        <tr><td>MBTI</td><td>INTP-T（自测） / ENFP（微博测）</td></tr>
-                        <tr><td>B站空间</td><td><a href="https://space.bilibili.com/1265680561" target="_blank">UID: 1265680561</a></td></tr>
-                        <tr><td>B站直播</td><td><a href="https://live.bilibili.com/22603245" target="_blank">22603245</a></td></tr>
-                        <tr><td>活动平台</td><td>B站 · YouTube · 抖音 · 微博 · Twitter · 小红书 · QQ音乐 · 网易云</td></tr>
-                        <tr><td>活动起始</td><td>2021年6月 · 个人势</td></tr>
+                <p class="hero__lead">
+                    王牌侦探发明家 · 来自 1868 年威尔士<br />
+                    乘时光机穿越到现代，结果<em>沉迷电子游戏</em>不想回去了<br />
+                    永远的 17 岁 —— 关注永雏塔菲谢谢喵
+                </p>
+
+                <div class="hero__actions">
+                    <a class="btn btn--primary" href="https://live.bilibili.com/22603245" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M4 6.5h16v12H4zM8 6.5L6 3.5M16 6.5l2-3" />
+                            <path d="M10.5 11v3M13.5 11v3" />
+                        </svg>
+                        前往直播间
+                    </a>
+                    <a class="btn btn--ghost" href="#profile">
+                        查看档案
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M8 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+
+                <figure class="hero__art" id="heroArt">
+                    <img src="./cover.webp" alt="永雏塔菲立绘" width="2000" height="1125" fetchpriority="high" decoding="async" />
+                    <figcaption>
+                        永雏塔菲 · Ace Taffy
+                        <small>粉发金瞳 · 148cm（含呆毛）· 形象设计：神乐七奈</small>
+                    </figcaption>
+                </figure>
+            </div>
+
+            <div class="hero__scroll" aria-hidden="true">
+                <span>往下了解塔菲</span>
+                <i></i>
+            </div>
+        </section>
+
+        <!-- ================= 关键数据 ================= -->
+        <section class="section section--tight">
+            <div class="wrap">
+                <div class="stat-strip" data-reveal="stagger">
+                    <div class="stat-strip__item">
+                        <span class="stat-strip__num" data-count="2021">2021</span>
+                        <span class="stat-strip__label">出道年份</span>
+                    </div>
+                    <div class="stat-strip__item">
+                        <span class="stat-strip__num" data-count="100" data-suffix="万+">100万+</span>
+                        <span class="stat-strip__label">B站粉丝 · 金盾达成</span>
+                    </div>
+                    <div class="stat-strip__item">
+                        <span class="stat-strip__num" data-count="5" data-suffix=" 首">5 首</span>
+                        <span class="stat-strip__label">原创歌曲</span>
+                    </div>
+                    <div class="stat-strip__item">
+                        <span class="stat-strip__num" data-count="98" data-suffix=" 款">98 款</span>
+                        <span class="stat-strip__label">2025 年直播游戏</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 档案 ================= -->
+        <section class="section" id="profile">
+            <div class="wrap">
+                <div class="sec-head" data-reveal>
+                    <p class="eyebrow">Profile</p>
+                    <h2 class="sec-title">塔菲<em>档案</em></h2>
+                    <p class="sec-sub">写在雏草姬手册第一页的那些基本设定。</p>
+                </div>
+
+                <div class="spec" data-reveal>
+                    <div class="spec__aside">
+                        <figure class="spec__avatar" data-zoom data-caption="永雏塔菲 · 头像">
+                            <img src="./avatar.webp" alt="永雏塔菲头像" width="512" height="512" loading="lazy" decoding="async" />
+                        </figure>
+                        <div>
+                            <h3 class="spec__name">
+                                永雏塔菲
+                                <span>Ace Taffy · 永雛タフィー</span>
+                            </h3>
+                            <div class="spec__alias">
+                                <span class="tag tag--brand">臭粉毛</span>
+                                <span class="tag">菲菲公主</span>
+                                <span class="tag">王牌发明家</span>
+                                <span class="tag">大菲柱</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <dl class="spec__list">
+                        <div class="spec__row"><dt>本名</dt><dd>永雏塔菲（永雛タフィー / Ace Taffy）</dd></div>
+                        <div class="spec__row"><dt>生日</dt><dd>1868 年 8 月 12 日 <span class="muted">（自称永远 17 岁）</span></dd></div>
+                        <div class="spec__row"><dt>出身</dt><dd>威尔士 · 1885 年穿越至现代</dd></div>
+                        <div class="spec__row"><dt>身高</dt><dd>148cm（含呆毛）</dd></div>
+                        <div class="spec__row"><dt>体重</dt><dd>80 斤不到 <span class="muted">（本人语）</span></dd></div>
+                        <div class="spec__row"><dt>发色瞳色</dt><dd>粉发 · 金瞳</dd></div>
+                        <div class="spec__row"><dt>形象设计</dt><dd>神乐七奈（nanakagura）</dd></div>
+                        <div class="spec__row"><dt>Live2D 模型</dt><dd>千铃 SR</dd></div>
+                        <div class="spec__row"><dt>粉丝名</dt><dd>雏草姬</dd></div>
+                        <div class="spec__row"><dt>代表符号</dt><dd>四叶草</dd></div>
+                        <div class="spec__row"><dt>吉祥物</dt><dd>菲球（小球球）</dd></div>
+                        <div class="spec__row"><dt>MBTI</dt><dd>INTP-T（自测） / ENFP（微博测）</dd></div>
+                        <div class="spec__row">
+                            <dt>B站空间</dt>
+                            <dd>
+                                <a class="link-chip" href="https://space.bilibili.com/1265680561" target="_blank" rel="noopener">
+                                    UID 1265680561
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="spec__row">
+                            <dt>B站直播</dt>
+                            <dd>
+                                <a class="link-chip" href="https://live.bilibili.com/22603245" target="_blank" rel="noopener">
+                                    22603245
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="spec__row"><dt>活动平台</dt><dd>B站 · YouTube · 抖音 · 微博 · Twitter · 小红书 · QQ音乐 · 网易云</dd></div>
+                        <div class="spec__row"><dt>活动起始</dt><dd>2021 年 6 月 · 个人势</dd></div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 主视觉立绘 ================= -->
+        <section class="section section--tight">
+            <div class="wrap">
+                <div class="split" data-reveal>
+                    <div>
+                        <p class="eyebrow">Key Visual</p>
+                        <h2 class="sec-title">塔菲的主视觉<em>立绘</em></h2>
+                        <p class="sec-sub">
+                            粉色的头发、金色的眼睛，头顶那根一柱擎天、怎么都压不下去的呆毛。
+                        </p>
+                        <ul class="keylist">
+                            <li>
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>
+                                <span><b>耳状发</b>　两侧的「耳朵」其实是耳状发，里面真的有骨头，非常敏感。</span>
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>
+                                <span><b>不是猫娘</b>　呆毛 + 耳状发的组合常被误认成猫耳，但塔菲本人否认到底。</span>
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>
+                                <span><b>心形护目镜</b>　常戴在头上，侦探发明家的标配行头。</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <figure class="split__media">
+                        <img class="prog" src="./assets/taffy-illust-tiny.webp" data-src="./assets/taffy-illust.webp"
+                            alt="永雏塔菲主视觉立绘" width="1754" height="987" loading="lazy" decoding="async"
+                            data-zoom data-caption="永雏塔菲 · 主视觉立绘" />
+                        <figcaption>永雏塔菲 · 主视觉立绘</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 故事 ================= -->
+        <section class="section" id="story">
+            <div class="wrap wrap--narrow">
+                <div class="sec-head" data-reveal>
+                    <p class="eyebrow">Origin</p>
+                    <h2 class="sec-title">塔菲的<em>故事</em></h2>
+                </div>
+                <div class="prose dropcap" data-reveal>
+                    <p><strong>永雏塔菲</strong>，这个名字大有来头 ——「永雏」是 Ace 的日语借字表记：Ace → 永雏，所以姓氏写作「永雏」却读作 Ace，意为「王牌」。「塔菲」是 Taffy 的音译。</p>
+                    <p>她出生于 <strong>1868 年 8 月 12 日的威尔士</strong>，1883 年继承了侦探事务所 —— 可惜那时福尔摩斯正以「斑点带子案件」声名大噪，侦探业严重内卷，塔菲一直接不到委托。无奈之下她宅在事务所搞发明，一不小心就成了<strong>王牌发明家</strong>。</p>
+                    <p>最大杰作当属<strong>时光机</strong>。她把目标设为 100 年后（1985 年），结果时光机迟到了整整 36 年，降落在 <strong>2021 年的现代</strong>。本想修好继续赶路，结果……她发现了电子游戏，从此决定不回去了。</p>
+                    <p>2021 年 6 月，她以<strong>个人势虚拟偶像</strong>出道，口号就是那句人尽皆知的 <em>「关注塔菲谢谢喵～」</em>。出道不到三年就斩获 B 站金盾（百万粉）、千舰成就与多首原创歌曲，被称为「王牌级偶像 and 单机区主播」—— 无公会、无 MCN、无团队，凭才华和诚意打下一片天。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 设定补充 ================= -->
+        <section class="section" id="settings">
+            <div class="wrap">
+                <div class="sec-head" data-reveal>
+                    <p class="eyebrow">Settings</p>
+                    <h2 class="sec-title">设定<em>补充</em></h2>
+                    <p class="sec-sub">时光机、腰包与那只名叫小皮的垂耳兔。</p>
+                </div>
+
+                <div class="bento">
+                    <article class="bento__cell bento__cell--3 sheen" data-reveal>
+                        <div class="bento__icon">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <circle cx="12" cy="12" r="8.5" />
+                                <path d="M12 7.5V12l3 2" />
+                            </svg>
+                        </div>
+                        <p class="bento__label">时光机规格</p>
+                        <p class="bento__value">载重 ≥ 129.3kg</p>
+                        <p class="bento__desc">因为塔菲想邂逅猫型机器人，129.3kg 正是哆啦A梦的重量。时光机不绕路、直达，但会迟到 36 年。</p>
+                    </article>
+
+                    <article class="bento__cell bento__cell--3 sheen" data-reveal style="--reveal-delay:80ms">
+                        <div class="bento__icon">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 20s-7-4.4-7-9.5A4.5 4.5 0 0112 7a4.5 4.5 0 017 3.5C19 15.6 12 20 12 20z" />
+                            </svg>
+                        </div>
+                        <p class="bento__label">喜欢的东西</p>
+                        <p class="bento__value">台球 · 流星 · 游戏 · 薯条</p>
+                        <p class="bento__desc">8 球制台球（王牌级台球宝贝）、猫型机器人、流星、游标卡尺（有尺 = 有耻）、生日快乐歌、妈妈（神乐七奈）、电子游戏。</p>
+                    </article>
+
+                    <article class="bento__cell bento__cell--2 sheen" data-reveal>
+                        <div class="bento__icon">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <circle cx="12" cy="12" r="8.5" />
+                                <path d="M9 9l6 6M15 9l-6 6" />
+                            </svg>
+                        </div>
+                        <p class="bento__label">讨厌的东西</p>
+                        <p class="bento__value">涩涩的、H 的、下流的</p>
+                        <p class="bento__desc">塔菲是<strong>有耻的 lady</strong>。最不喜欢的游戏类型是竞技游戏 —— 不想跟分过不去。</p>
+                    </article>
+
+                    <article class="bento__cell bento__cell--2 sheen" data-reveal style="--reveal-delay:80ms">
+                        <div class="bento__icon">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <rect x="4" y="7" width="16" height="12" rx="3" />
+                                <path d="M9 7V5.5A1.5 1.5 0 0110.5 4h3A1.5 1.5 0 0115 5.5V7" />
+                            </svg>
+                        </div>
+                        <p class="bento__label">随身物品</p>
+                        <p class="bento__value">羽毛笔 · 神奇药水 · 放大镜</p>
+                        <p class="bento__desc">炼铜药水 / 炼老婆药水 / 猫耳娘药水 —— 全部别在腰带上。</p>
+                    </article>
+
+                    <article class="bento__cell bento__cell--2 sheen" data-reveal style="--reveal-delay:160ms">
+                        <div class="bento__icon">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M9 6.5C6.8 6.5 5 8.6 5 11.5S6.8 17 9 17c2 0 3-1.5 3-3s1-3 3-3c2.2 0 4-2.1 4-5" />
+                                <circle cx="16.5" cy="5" r="1.4" />
+                            </svg>
+                        </div>
+                        <p class="bento__label">宠物</p>
+                        <p class="bento__value">垂耳兔「小皮」</p>
+                        <p class="bento__desc">从时光机裂缝中掉进 19 世纪、被塔菲顺走的现代兔子。塔菲曾期待小皮变成兔美男…… 直到体检发现小皮是女兔子。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 活动历程 ================= -->
+        <section class="section" id="timeline">
+            <div class="wrap">
+                <div class="sec-head" data-reveal>
+                    <p class="eyebrow">Timeline</p>
+                    <h2 class="sec-title">活动<em>历程</em></h2>
+                    <p class="sec-sub">从 2021 年 6 月 1 日的第一条动态开始。</p>
+                </div>
+
+                <div data-reveal>
+                    <div class="segmented" id="tlTabs" role="tablist" aria-label="按年份查看历程">
+                        <span class="segmented__thumb" aria-hidden="true"></span>
+                        <button role="tab" aria-selected="true" data-panel="tl-2021">2021</button>
+                        <button role="tab" aria-selected="false" data-panel="tl-2022">2022</button>
+                        <button role="tab" aria-selected="false" data-panel="tl-2023">2023</button>
+                        <button role="tab" aria-selected="false" data-panel="tl-2024">2024</button>
+                        <button role="tab" aria-selected="false" data-panel="tl-2025">2025</button>
+                    </div>
+
+                    <div class="tl-panels">
+                        <!-- 2021 -->
+                        <div class="tl-panel is-active" id="tl-2021" role="tabpanel">
+                            <div class="tl-year-head">
+                                <h3>2021 年</h3>
+                                <p>传奇起航</p>
+                            </div>
+                            <div class="timeline">
+                                <div class="tl-item"><div class="tl-item__date">06.01</div><div class="tl-item__desc">发布首条动态，宣告虚拟偶像生涯开始</div></div>
+                                <div class="tl-item"><div class="tl-item__date">06.09</div><div class="tl-item__desc">立绘披露直播；粉丝勋章投票，最终定名「雏草姬」；B站粉丝突破 <strong>10 万</strong></div></div>
+                                <div class="tl-item"><div class="tl-item__date">06.12</div><div class="tl-item__desc">吉祥物命名投票，「菲球」正式诞生</div></div>
+                                <div class="tl-item"><div class="tl-item__date">06.13</div><div class="tl-item__desc">代表符号确定为 四叶草</div></div>
+                                <div class="tl-item"><div class="tl-item__date">06.23</div><div class="tl-item__desc">Live2D 形象动画投稿披露</div></div>
+                                <div class="tl-item"><div class="tl-item__date">06.26</div><div class="tl-item__desc">首播 —— 详细介绍设定，演唱《小黑猫的探戈》</div></div>
+                                <div class="tl-item"><div class="tl-item__date">06.27</div><div class="tl-item__desc">10 万粉纪念提问箱回</div></div>
+                                <div class="tl-item"><div class="tl-item__date">08.12</div><div class="tl-item__desc">第一次生日会；发布翻唱《忍者棒棒》</div></div>
+                                <div class="tl-item"><div class="tl-item__date">11.11</div><div class="tl-item__desc">B站粉丝突破 <strong>20 万</strong></div></div>
+                                <div class="tl-item"><div class="tl-item__date">12.18</div><div class="tl-item__desc">BLS 2021 全站赛百强主播</div></div>
+                            </div>
+                        </div>
+
+                        <!-- 2022 -->
+                        <div class="tl-panel" id="tl-2022" role="tabpanel">
+                            <div class="tl-year-head">
+                                <h3>2022 年</h3>
+                                <p>火力全开</p>
+                            </div>
+                            <div class="timeline">
+                                <div class="tl-item"><div class="tl-item__date">02.08</div><div class="tl-item__desc">B站粉丝突破 <strong>30 万</strong></div></div>
+                                <div class="tl-item"><div class="tl-item__date">02.23</div><div class="tl-item__desc">达成「<strong>千人舰队</strong>」成就</div></div>
+                                <div class="tl-item"><div class="tl-item__date">04.01</div><div class="tl-item__desc">愚人节整活：换叔叔同款头像 +「你所热爱的，就是你的生活。」→ 粉丝突破 <strong>40 万</strong></div></div>
+                                <div class="tl-item"><div class="tl-item__date">05.10</div><div class="tl-item__desc">YouTube 收益化通过</div></div>
+                                <div class="tl-item"><div class="tl-item__date">05.31</div><div class="tl-item__desc">B站粉丝突破 <strong>50 万</strong></div></div>
+                                <div class="tl-item"><div class="tl-item__date">06.26</div><div class="tl-item__desc">一周年纪念直播 + 翻唱《Cat Loving》</div></div>
+                                <div class="tl-item"><div class="tl-item__date">08.12</div><div class="tl-item__desc">第二次生日会；发布自制恐怖游戏《1883 Science &amp; Medium》DEMO，后上架 Steam</div></div>
+                                <div class="tl-item"><div class="tl-item__date">09.08</div><div class="tl-item__desc">B站粉丝突破 <strong>60 万</strong></div></div>
+                                <div class="tl-item"><div class="tl-item__date">09.10</div><div class="tl-item__desc">「永雏塔菲·1883」装扮上线</div></div>
+                                <div class="tl-item"><div class="tl-item__date">12.31</div><div class="tl-item__desc">跨年新衣「1883」发布</div></div>
+                            </div>
+                        </div>
+
+                        <!-- 2023 -->
+                        <div class="tl-panel" id="tl-2023" role="tabpanel">
+                            <div class="tl-year-head">
+                                <h3>2023 年</h3>
+                                <p>破壁之年</p>
+                            </div>
+                            <div class="timeline">
+                                <div class="tl-item"><div class="tl-item__date">01.30</div><div class="tl-item__desc">B站粉丝突破 <strong>70 万</strong></div></div>
+                                <div class="tl-item"><div class="tl-item__date">04.01</div><div class="tl-item__desc">愚人节发布原创漫画《穿越成本命偶像后搞砸了她的人设》</div></div>
+                                <div class="tl-item"><div class="tl-item__date">05.02</div><div class="tl-item__desc">大菲 3D 披露会；唱跳《像神一样呐》《偶像》</div></div>
+                                <div class="tl-item"><div class="tl-item__date">06.06</div><div class="tl-item__desc">与《魂器学院》联动</div></div>
+                                <div class="tl-item"><div class="tl-item__date">06.25</div><div class="tl-item__desc">首支原创曲《真実の鍵》发布（1883 OP）</div></div>
+                                <div class="tl-item"><div class="tl-item__date">06.26</div><div class="tl-item__desc">二周年纪念 + 夏装新衣发布</div></div>
+                                <div class="tl-item"><div class="tl-item__date">07.01</div><div class="tl-item__desc">广州萤火虫漫展参展</div></div>
+                                <div class="tl-item"><div class="tl-item__date">07.12</div><div class="tl-item__desc">B站粉丝突破 <strong>80 万</strong>；翻唱《强风大背头》</div></div>
+                                <div class="tl-item"><div class="tl-item__date">09.26</div><div class="tl-item__desc">B站粉丝突破 <strong>90 万</strong></div></div>
+                                <div class="tl-item"><div class="tl-item__date">10.29</div><div class="tl-item__desc">狂战士新衣发布</div></div>
+                                <div class="tl-item"><div class="tl-item__date">12.31</div><div class="tl-item__desc">B站粉丝突破 <strong>100 万，金盾达成！</strong>；第二首原创曲《又一遍的歌》发布</div></div>
+                            </div>
+                        </div>
+
+                        <!-- 2024 -->
+                        <div class="tl-panel" id="tl-2024" role="tabpanel">
+                            <div class="tl-year-head">
+                                <h3>2024 年</h3>
+                                <p>全面开花</p>
+                            </div>
+                            <div class="timeline">
+                                <div class="tl-item"><div class="tl-item__date">01.19</div><div class="tl-item__desc">翻唱《可爱的女朋友》</div></div>
+                                <div class="tl-item"><div class="tl-item__date">02.24</div><div class="tl-item__desc">百万粉纪念原创曲《未来旅行》发布</div></div>
+                                <div class="tl-item"><div class="tl-item__date">03.08</div><div class="tl-item__desc">hanaffy 组合翻唱《呜呼、美妙的喵生》</div></div>
+                                <div class="tl-item"><div class="tl-item__date">05.04</div><div class="tl-item__desc">首次全息个人演唱会「Ace Taffy Only 1st Live」</div></div>
+                                <div class="tl-item"><div class="tl-item__date">05.18</div><div class="tl-item__desc">翻唱 + 描改《兔子洞》</div></div>
+                                <div class="tl-item"><div class="tl-item__date">06.28</div><div class="tl-item__desc">三周年保健委员新衣发布</div></div>
+                                <div class="tl-item"><div class="tl-item__date">07.12</div><div class="tl-item__desc">BiliBiliWorld 2024 参展</div></div>
+                                <div class="tl-item"><div class="tl-item__date">08.25</div><div class="tl-item__desc">黑神话悟空天命挑战组队赛<strong>第一名</strong></div></div>
+                            </div>
+                        </div>
+
+                        <!-- 2025 -->
+                        <div class="tl-panel" id="tl-2025" role="tabpanel">
+                            <div class="tl-year-head">
+                                <h3>2025 年</h3>
+                                <p>新的篇章</p>
+                            </div>
+                            <div class="timeline">
+                                <div class="tl-item"><div class="tl-item__date">02.03</div><div class="tl-item__desc">原创曲《虚拟假面》发布</div></div>
+                                <div class="tl-item"><div class="tl-item__date">02.14</div><div class="tl-item__desc">饿了么超级星势力联动</div></div>
+                                <div class="tl-item"><div class="tl-item__date">02.28</div><div class="tl-item__desc">应邀出场抖音动漫直播</div></div>
+                                <div class="tl-item"><div class="tl-item__date">05.10</div><div class="tl-item__desc">开通小红书平台账号</div></div>
+                                <div class="tl-item"><div class="tl-item__date">06.30</div><div class="tl-item__desc">虚拟区合同到期，<strong>转入游戏区</strong></div></div>
+                                <div class="tl-item"><div class="tl-item__date">07.04</div><div class="tl-item__desc">原创应援曲《关注塔菲谢谢喵》发布</div></div>
+                                <div class="tl-item"><div class="tl-item__date">07.18</div><div class="tl-item__desc">广州萤火虫漫展参展</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 小百科 ================= -->
+        <section class="section" id="facts">
+            <div class="wrap">
+                <div class="sec-head" data-reveal>
+                    <p class="eyebrow">Trivia Book</p>
+                    <h2 class="sec-title">塔菲<em>小百科</em></h2>
+                    <p class="sec-sub">记住这些，你就是合格的雏草姬。</p>
+                </div>
+
+                <div class="bento" data-reveal="stagger">
+                    <article class="bento__cell bento__cell--3 sheen">
+                        <p class="bento__label">口头禅</p>
+                        <p class="bento__value bento__value--xl">关注塔菲谢谢喵</p>
+                        <p class="bento__desc">塔菲最出圈的一句话，也是本站名字的来源。</p>
+                    </article>
+
+                    <article class="bento__cell bento__cell--3 sheen">
+                        <p class="bento__label">直播特色</p>
+                        <p class="bento__value">单机游戏 · 杂谈 · 歌回 · 互动</p>
+                        <p class="bento__desc">2025 年 6 月转入游戏区，单机区主播的身份更加名正言顺。</p>
+                    </article>
+
+                    <article class="bento__cell bento__cell--2 sheen">
+                        <p class="bento__label">穿越偏差</p>
+                        <p class="bento__value">目标 1985 → 实际 2021</p>
+                        <p class="bento__desc">迟到整整 36 年。</p>
+                    </article>
+
+                    <article class="bento__cell bento__cell--2 sheen">
+                        <p class="bento__label">随身物品</p>
+                        <p class="bento__value">游标卡尺</p>
+                        <p class="bento__desc">有尺（耻）之证，可测量雏草姬，也可砸人。</p>
+                    </article>
+
+                    <article class="bento__cell bento__cell--2 sheen">
+                        <p class="bento__label">第一人称</p>
+                        <p class="bento__value">taffy</p>
+                        <p class="bento__desc">直播时的自称。</p>
+                    </article>
+
+                    <article class="bento__cell bento__cell--2 sheen">
+                        <p class="bento__label">粉丝名含义</p>
+                        <p class="bento__value">雏草姬</p>
+                        <p class="bento__desc">塔菲的雏草花园。</p>
+                    </article>
+
+                    <article class="bento__cell bento__cell--2 sheen">
+                        <p class="bento__label">脚的秘密</p>
+                        <p class="bento__value">奶酪味</p>
+                        <p class="bento__desc">本人说的。</p>
+                    </article>
+
+                    <article class="bento__cell bento__cell--2 sheen">
+                        <p class="bento__label">1885 年最爱</p>
+                        <p class="bento__value">薯条</p>
+                        <p class="bento__desc">但不爱炸鱼薯条里的炸鱼。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 趣闻 ================= -->
+        <section class="section" id="trivia">
+            <div class="wrap">
+                <div class="sec-head" data-reveal>
+                    <p class="eyebrow">Fun Facts</p>
+                    <h2 class="sec-title">趣闻<em>合集</em></h2>
+                    <p class="sec-sub">菲球、超管、威尔士人和蒙娜塔菲的微笑。</p>
+                </div>
+
+                <div class="acc acc--cols" data-reveal>
+                    <details class="acc__item">
+                        <summary class="acc__head"><span class="acc__idx">01</span>菲球（吉祥物）</summary>
+                        <div class="acc__body">
+                            <p>全称「无敌的勇敢的性感的神秘的迷人的帅气的神奇的勤勉的强势的华丽的激情的可怕的漂亮的粉色王牌菲球」。</p>
+                            <p>由喵田弥夜 Miya 创作，2021 年 6 月首次出现。命名投票确定「菲球」。</p>
+                            <p>菲球是由<strong>雏草姬改造</strong>而来（很难说这是好事还是坏事），能说话、会移动、可能还会吃东西 —— 提问箱是主食，小作文是零嘴。本质是毛绒玩具，但塔菲研发出<strong>生命齿轮</strong>塞进去合成了菲球。</p>
+                        </div>
+                    </details>
+
+                    <details class="acc__item">
+                        <summary class="acc__head"><span class="acc__idx">02</span>反抗超管</summary>
+                        <div class="acc__body">
+                            <p>塔菲和 B 站超管的「战斗史」：</p>
+                            <ul>
+                                <li>2021.07.30 —— 首次被警告</li>
+                                <li>2021.12.04 —— 直播「洗澡」被警告</li>
+                                <li>2022.02.03 —— 播限免电影被拉闸，次日再播被<strong>封禁一天</strong></li>
+                                <li>2022.02.22 —— 直播「睡觉」被警告</li>
+                                <li>2022.04.01 —— 自称 B 站长公主被警告</li>
+                                <li>2022.06.26 —— 周年回被超管拿下，气出本音</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="acc__item">
+                        <summary class="acc__head"><span class="acc__idx">03</span>威尔士人梗</summary>
+                        <div class="acc__body">
+                            <p>神乐七奈某次直播用了翻译机，把「塔菲酱是我自豪的女儿」生草翻译成了<strong>「女儿是自大的威尔士人」</strong>，从此塔菲有了「威尔士人」这个二设。</p>
+                        </div>
+                    </details>
+
+                    <details class="acc__item">
+                        <summary class="acc__head"><span class="acc__idx">04</span>愚人节整活</summary>
+                        <div class="acc__body">
+                            <ul>
+                                <li><strong>2022：</strong>换叔叔同款头像，「你所热爱的，就是你的生活。」</li>
+                                <li><strong>2023：</strong>换成粉头发班尼特</li>
+                                <li><strong>2024：</strong>放出「长大版小菲」，声称之前被黑衣组织注入变小药</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="acc__item">
+                        <summary class="acc__head"><span class="acc__idx">05</span>生日歌传统</summary>
+                        <div class="acc__body">
+                            <p>塔菲直播时的<strong>王牌级音乐</strong>：每当雏草姬过生日（或假装过生日），塔菲会吹着笛子唱「祝你生日快乐……」，后来进化出第二版：「对所有的烦恼说拜拜，对所有的快乐说嗨嗨～」</p>
+                            <p>恐怖游戏里也用来壮胆 —— 以毒攻毒。</p>
+                        </div>
+                    </details>
+
+                    <details class="acc__item">
+                        <summary class="acc__head"><span class="acc__idx">06</span>蒙娜塔菲的微笑</summary>
+                        <div class="acc__body">
+                            <p>2024 年 3 月 31 日，塔菲在微博展示自画油画，取名《蒙娜塔菲的微笑》。12 月 24 日圣诞直播又现场作画，命名为《2024 雪绒花下的笑哭誓约：雏草姬和塔菲的笑哭之夜》—— 真正的<strong>大画家</strong>。</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 作品 ================= -->
+        <section class="section" id="songs">
+            <div class="wrap">
+                <div class="sec-head" data-reveal>
+                    <p class="eyebrow">Discography</p>
+                    <h2 class="sec-title">原创<em>歌曲</em></h2>
+                    <p class="sec-sub">五首原创曲，以及一路唱过来的翻唱。</p>
+                </div>
+
+                <div class="table-wrap" data-reveal>
+                    <table class="dtable">
+                        <thead>
+                            <tr><th>#</th><th>时间</th><th>标题</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td><td>2023.06.25</td>
+                                <td><a href="https://www.bilibili.com/video/BV1j14y127GF" target="_blank" rel="noopener">真実の鍵</a><span class="sub">独立游戏《1883》OP</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td><td>2023.12.31</td>
+                                <td><a href="https://www.bilibili.com/video/BV1qe411q7KS" target="_blank" rel="noopener">又一遍的歌</a></td>
+                            </tr>
+                            <tr>
+                                <td>3</td><td>2024.02.24</td>
+                                <td><a href="https://www.bilibili.com/video/BV1uC411W79a" target="_blank" rel="noopener">未来旅行</a><span class="sub">百万粉纪念曲</span></td>
+                            </tr>
+                            <tr>
+                                <td>4</td><td>2025.02.03</td>
+                                <td><a href="https://www.bilibili.com/video/BV1vxPXe6EzV" target="_blank" rel="noopener">虚拟假面</a></td>
+                            </tr>
+                            <tr>
+                                <td>5</td><td>2025.07.04</td>
+                                <td><a href="https://www.bilibili.com/video/BV1EF3uzeETo" target="_blank" rel="noopener">关注塔菲谢谢喵</a><span class="sub">原创应援曲</span></td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
-            </div>
-        </div>
 
-        <div class="section">
-            <div class="section-title">小菲</div>
-            <div style="text-align:center;">
-                <img src="./xiaofei.webp" alt="永雏小菲" loading="lazy" style="width:clamp(180px,30vw,280px);border-radius:20px;box-shadow:0 8px 32px rgba(240,98,146,0.15);">
-                <p style="margin-top:12px;color:#888;font-size:0.9rem;">永雏小菲 · 郊游连衣裙</p>
-            </div>
-        </div>
+                <div class="sec-head" style="margin-top:clamp(40px,5vw,64px);margin-bottom:22px" data-reveal>
+                    <h3 class="sec-title" style="font-size:var(--fs-h3)">翻唱精选</h3>
+                </div>
 
-        <div class="section" id="story">
-            <div class="section-title">塔菲的故事</div>
-            <div class="story">
-                <p><strong>永雏塔菲</strong>，这个名字大有来头——"永雏"是 Ace 的日语借字表记：Ace → 永雏，所以姓氏写作"永雏"却读作 Ace，意为"王牌"。"塔菲"是 Taffy 的音译。</p>
-                <p>她出生于 <strong>1868年8月12日的威尔士</strong>，1883年继承了侦探事务所——可惜那时福尔摩斯正以"斑点带子案件"声名大噪，侦探业严重内卷，塔菲一直接不到委托。无奈之下她宅在事务所搞发明，一不小心就成了<strong>王牌发明家</strong>。</p>
-                <p>最大杰作当属<strong>时光机</strong>。她把目标设为 100 年后（1985年），结果时光机迟到了整整 36 年，降落在 <strong>2021 年的现代</strong>。本想修好继续赶路，结果……她发现了电子游戏，从此决定不回去了。</p>
-                <p>2021年6月，她以<strong>个人势虚拟偶像</strong>出道，口号就是那句人尽皆知的 <strong>"关注塔菲谢谢喵～"</strong>。出道不到三年就斩获 B站金盾（百万粉）、千舰成就、原创歌曲，被称为"王牌级偶像 and 单机区主播"——无公会、无MCN、无团队，凭才华和诚意打下一片天。</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">设定补充</div>
-            <div class="story">
-                <p><strong>时光机规格：</strong>载重量 ≥ 129.3kg（因为塔菲想邂逅猫型机器人，129.3kg 就是哆啦A梦的重量）。时光机不绕路、直达，但会迟到 36 年。</p>
-                <p><strong>喜欢的东西：</strong>8 球制台球、猫型机器人、流星、游标卡尺（有尺=有耻）、生日快乐歌、妈妈（神乐七奈）、电子游戏。</p>
-                <p><strong>讨厌的东西：</strong>涩涩的、H的、下流的东西。塔菲是<em>有耻的 lady</em>。最不喜欢的游戏类型是竞技游戏（不想跟分过不去）。</p>
-                <p><strong>随身物品：</strong>羽毛笔、炼铜药水 / 炼老婆药水 / 猫耳娘药水、放大镜——全部别在腰带上。</p>
-                <p><strong>宠物：</strong>垂耳兔<strong>小皮</strong>——从时光机裂缝中掉进 19 世纪被塔菲顺走的现代兔子。塔菲曾期待小皮变成兔美男……直到体检发现小皮是女兔子。</p>
-            </div>
-        </div>
-
-        <div class="section" id="timeline">
-            <div class="section-title">活动历程</div>
-            <details class="collapsible" open>
-                <summary>2021 年 · 传奇起航</summary>
-                <div class="body">
-                    <div class="timeline">
-                        <div class="tl-item"><div class="date">06.01</div><div class="desc">发布首条动态，宣告虚拟偶像生涯开始</div></div>
-                        <div class="tl-item"><div class="date">06.09</div><div class="desc">立绘披露直播；粉丝勋章投票，最终定名"雏草姬"；B站粉丝突破 10万</div></div>
-                        <div class="tl-item"><div class="date">06.12</div><div class="desc">吉祥物命名投票，"菲球"正式诞生</div></div>
-                        <div class="tl-item"><div class="date">06.13</div><div class="desc">代表符号确定为 四叶草</div></div>
-                        <div class="tl-item"><div class="date">06.23</div><div class="desc">Live2D 形象动画投稿披露</div></div>
-                        <div class="tl-item"><div class="date">06.26</div><div class="desc">首播——详细介绍设定，演唱《小黑猫的探戈》</div></div>
-                        <div class="tl-item"><div class="date">06.27</div><div class="desc">10万粉纪念提问箱回</div></div>
-                        <div class="tl-item"><div class="date">08.12</div><div class="desc">第一次生日会；发布翻唱《忍者棒棒》</div></div>
-                        <div class="tl-item"><div class="date">11.11</div><div class="desc">B站粉丝突破 20万</div></div>
-                        <div class="tl-item"><div class="date">12.18</div><div class="desc">BLS 2021 全站赛百强主播</div></div>
-                    </div>
-                </div>
-            </details>
-            <details class="collapsible">
-                <summary>2022 年 · 火力全开</summary>
-                <div class="body">
-                    <div class="timeline">
-                        <div class="tl-item"><div class="date">02.08</div><div class="desc">B站粉丝突破 30万</div></div>
-                        <div class="tl-item"><div class="date">02.23</div><div class="desc">达成"千人舰队"成就</div></div>
-                        <div class="tl-item"><div class="date">04.01</div><div class="desc">愚人节整活：换叔叔同款头像 + "你所热爱的，就是你的生活。" → 粉丝突破 40万</div></div>
-                        <div class="tl-item"><div class="date">05.10</div><div class="desc">YouTube 收益化通过</div></div>
-                        <div class="tl-item"><div class="date">05.31</div><div class="desc">B站粉丝突破 50万</div></div>
-                        <div class="tl-item"><div class="date">06.26</div><div class="desc">一周年纪念直播 + 翻唱《Cat Loving》</div></div>
-                        <div class="tl-item"><div class="date">08.12</div><div class="desc">第二次生日会；发布自制恐怖游戏《1883 Science & Medium》DEMO，后上架 Steam</div></div>
-                        <div class="tl-item"><div class="date">09.08</div><div class="desc">B站粉丝突破 60万</div></div>
-                        <div class="tl-item"><div class="date">09.10</div><div class="desc">「永雏塔菲·1883」装扮上线</div></div>
-                        <div class="tl-item"><div class="date">12.31</div><div class="desc">跨年新衣「1883」发布</div></div>
-                    </div>
-                </div>
-            </details>
-            <details class="collapsible">
-                <summary>2023 年 · 破壁之年</summary>
-                <div class="body">
-                    <div class="timeline">
-                        <div class="tl-item"><div class="date">01.30</div><div class="desc">B站粉丝突破 70万</div></div>
-                        <div class="tl-item"><div class="date">04.01</div><div class="desc">愚人节发布原创漫画《穿越成本命偶像后搞砸了她的人设》</div></div>
-                        <div class="tl-item"><div class="date">05.02</div><div class="desc">大菲 3D 披露会；唱跳《像神一样呐》《偶像》</div></div>
-                        <div class="tl-item"><div class="date">06.06</div><div class="desc">与《魂器学院》联动</div></div>
-                        <div class="tl-item"><div class="date">06.25</div><div class="desc">首支原创曲《真実の鍵》发布（1883 OP）</div></div>
-                        <div class="tl-item"><div class="date">06.26</div><div class="desc">二周年纪念 + 夏装新衣发布</div></div>
-                        <div class="tl-item"><div class="date">07.01</div><div class="desc">广州萤火虫漫展参展</div></div>
-                        <div class="tl-item"><div class="date">07.12</div><div class="desc">B站粉丝突破 80万；翻唱《强风大背头》</div></div>
-                        <div class="tl-item"><div class="date">09.26</div><div class="desc">B站粉丝突破 90万</div></div>
-                        <div class="tl-item"><div class="date">10.29</div><div class="desc">狂战士新衣发布</div></div>
-                        <div class="tl-item"><div class="date">12.31</div><div class="desc">B站粉丝突破 100万，金盾达成！；第二首原创曲《又一遍的歌》发布</div></div>
-                    </div>
-                </div>
-            </details>
-            <details class="collapsible">
-                <summary>2024 年 · 全面开花</summary>
-                <div class="body">
-                    <div class="timeline">
-                        <div class="tl-item"><div class="date">01.19</div><div class="desc">翻唱《可爱的女朋友》</div></div>
-                        <div class="tl-item"><div class="date">02.24</div><div class="desc">百万粉纪念原创曲《未来旅行》发布</div></div>
-                        <div class="tl-item"><div class="date">03.08</div><div class="desc">hanaffy 组合翻唱《呜呼、美妙的喵生》</div></div>
-                        <div class="tl-item"><div class="date">05.04</div><div class="desc">首次全息个人演唱会「Ace Taffy Only 1st Live」</div></div>
-                        <div class="tl-item"><div class="date">05.18</div><div class="desc">翻唱+描改《兔子洞》</div></div>
-                        <div class="tl-item"><div class="date">06.28</div><div class="desc">三周年保健委员新衣发布</div></div>
-                        <div class="tl-item"><div class="date">07.12</div><div class="desc">BiliBiliWorld 2024 参展</div></div>
-                        <div class="tl-item"><div class="date">08.25</div><div class="desc">黑神话悟空天命挑战组队赛第一名</div></div>
-                    </div>
-                </div>
-            </details>
-            <details class="collapsible">
-                <summary>2025 年 · 新的篇章</summary>
-                <div class="body">
-                    <div class="timeline">
-                        <div class="tl-item"><div class="date">02.03</div><div class="desc">原创曲《虚拟假面》发布</div></div>
-                        <div class="tl-item"><div class="date">02.14</div><div class="desc">饿了么超级星势力联动</div></div>
-                        <div class="tl-item"><div class="date">02.28</div><div class="desc">应邀出场抖音动漫直播</div></div>
-                        <div class="tl-item"><div class="date">05.10</div><div class="desc">开通小红书平台账号</div></div>
-                        <div class="tl-item"><div class="date">06.30</div><div class="desc">虚拟区合同到期，转入游戏区</div></div>
-                        <div class="tl-item"><div class="date">07.04</div><div class="desc">原创应援曲《关注塔菲谢谢喵》发布</div></div>
-                        <div class="tl-item"><div class="date">07.18</div><div class="desc">广州萤火虫漫展参展</div></div>
-                    </div>
-                </div>
-            </details>
-        </div>
-
-        <div class="section" id="facts">
-            <div class="section-title">塔菲小百科</div>
-            <div class="facts-grid">
-                <div class="fact-card"><div class="label">口头禅</div><div class="value">"关注塔菲谢谢喵～"</div></div>
-                <div class="fact-card"><div class="label">直播特色</div><div class="value">单机游戏 · 杂谈 · 歌回 · 互动</div></div>
-                <div class="fact-card"><div class="label">穿越偏差</div><div class="value">目标 1985 → 实际 2021<br>迟到 36 年</div></div>
-                <div class="fact-card"><div class="label">随身物品</div><div class="value">游标卡尺（有尺之证）</div></div>
-                <div class="fact-card"><div class="label">第一人称</div><div class="value">taffy</div></div>
-                <div class="fact-card"><div class="label">粉丝名含义</div><div class="value">雏草姬 = 塔菲的雏草花园</div></div>
-                <div class="fact-card"><div class="label">脚的秘密</div><div class="value">奶酪味</div></div>
-                <div class="fact-card"><div class="label">1885年最爱</div><div class="value">薯条（但不爱炸鱼薯条里的炸鱼）</div></div>
-            </div>
-        </div>
-
-        <div class="section" id="trivia">
-            <div class="section-title">趣闻</div>
-            <details class="collapsible">
-                <summary>菲球（吉祥物）</summary>
-                <div class="body">
-                    <p>全称"无敌的勇敢的性感的神秘的迷人的帅气的神奇的勤勉的强势的华丽的激情的可怕的漂亮的粉色王牌菲球"。</p>
-                    <p>由喵田弥夜Miya创作，2021年6月首次出现。命名投票确定"菲球"。</p>
-                    <p>菲球是由<strong>雏草姬改造</strong>而来（很难说这是好事还是坏事），能说话、会移动、可能还会吃东西——提问箱是主食，小作文是零嘴。本质是毛绒玩具，但塔菲研发出<strong>生命齿轮</strong>塞进去合成了菲球。</p>
-                </div>
-            </details>
-            <details class="collapsible">
-                <summary>反抗超管</summary>
-                <div class="body">
-                    <p>塔菲和 B站超管的"战斗史"：</p>
-                    <ul>
-                        <li>2021.07.30 —— 首次被警告</li>
-                        <li>2021.12.04 —— 直播"洗澡"被警告</li>
-                        <li>2022.02.03 —— 播限免电影被拉闸，次日再播被<strong>封禁一天</strong></li>
-                        <li>2022.02.22 —— 直播"睡觉"被警告</li>
-                        <li>2022.04.01 —— 自称B站长公主被警告</li>
-                        <li>2022.06.26 —— 周年回被超管拿下，气出本音</li>
-                    </ul>
-                </div>
-            </details>
-            <details class="collapsible">
-                <summary>威尔士人梗</summary>
-                <div class="body">
-                    <p>神乐七奈某次直播用了翻译机，把"塔菲酱是我自豪的女儿"生草翻译成了<strong>"女儿是自大的威尔士人"</strong>，从此塔菲有了"威尔士人"这个二设。</p>
-                </div>
-            </details>
-            <details class="collapsible">
-                <summary>愚人节整活</summary>
-                <div class="body">
-                    <ul>
-                        <li><strong>2022：</strong>换叔叔同款头像，"你所热爱的，就是你的生活。"</li>
-                        <li><strong>2023：</strong>换成粉头发班尼特</li>
-                        <li><strong>2024：</strong>放出"长大版小菲"，声称之前被黑衣组织注入变小药</li>
-                    </ul>
-                </div>
-            </details>
-            <details class="collapsible">
-                <summary>生日歌传统</summary>
-                <div class="body">
-                    <p>塔菲直播时的<strong>王牌级音乐</strong>：每当雏草姬过生日（或假装过生日），塔菲会吹着笛子唱"祝你生日快乐……"，后来进化出第二版："对所有的烦恼说拜拜，对所有的快乐说嗨嗨～"</p>
-                    <p>恐怖游戏里也用来壮胆——以毒攻毒。</p>
-                </div>
-            </details>
-            <details class="collapsible">
-                <summary>蒙娜塔菲的微笑</summary>
-                <div class="body">
-                    <p>2024年3月31日，塔菲在微博展示自画油画，取名《蒙娜塔菲的微笑》。12月24日圣诞直播又现场作画，命名为《2024雪绒花下的笑哭誓约：雏草姬和塔菲的笑哭之夜》——真正的<strong>大画家</strong>。</p>
-                </div>
-            </details>
-        </div>
-
-        <div class="section" id="songs">
-            <div class="section-title">原创歌曲</div>
-            <table class="song-table">
-                <thead><tr><th>#</th><th>时间</th><th>标题</th></tr></thead>
-                <tbody>
-                    <tr><td>1</td><td>2023.06.25</td><td><a href="https://www.bilibili.com/video/BV1j14y127GF" target="_blank">真実の鍵</a>（独立游戏 1883 OP）</td></tr>
-                    <tr><td>2</td><td>2023.12.31</td><td><a href="https://www.bilibili.com/video/BV1qe411q7KS" target="_blank">又一遍的歌</a></td></tr>
-                    <tr><td>3</td><td>2024.02.24</td><td><a href="https://www.bilibili.com/video/BV1uC411W79a" target="_blank">未来旅行</a>（百万粉纪念曲）</td></tr>
-                    <tr><td>4</td><td>2025.02.03</td><td><a href="https://www.bilibili.com/video/BV1vxPXe6EzV" target="_blank">虚拟假面</a></td></tr>
-                    <tr><td>5</td><td>2025.07.04</td><td><a href="https://www.bilibili.com/video/BV1EF3uzeETo" target="_blank">关注塔菲谢谢喵</a>（原创应援曲）</td></tr>
-                </tbody>
-            </table>
-            <br><br>
-            <div class="section-title" style="font-size:1.3rem;">翻唱精选</div>
-            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:8px; font-size:0.9rem;">
-                <details class="collapsible" style="margin-bottom:8px;">
-                    <summary>2021</summary>
-                    <div class="body" style="font-size:0.85rem;">《Charles》《忍者棒棒》</div>
-                </details>
-                <details class="collapsible" style="margin-bottom:8px;">
-                    <summary>2022</summary>
-                    <div class="body" style="font-size:0.85rem;">《大正浪漫》《月光传说》《Cat Loving》《欢欢乐乐安乐死》</div>
-                </details>
-                <details class="collapsible" style="margin-bottom:8px;">
-                    <summary>2023</summary>
-                    <div class="body" style="font-size:0.85rem;">《强风大背头》</div>
-                </details>
-                <details class="collapsible" style="margin-bottom:8px;">
-                    <summary>2024</summary>
-                    <div class="body" style="font-size:0.85rem;">《可爱的女朋友》《呜呼、美妙的喵生》《兔子洞》《POKEDANCE》《偶像/アイドル》《My time》《無責任集合体》</div>
-                </details>
-                <details class="collapsible" style="margin-bottom:8px;">
-                    <summary>2025</summary>
-                    <div class="body" style="font-size:0.85rem;">《Override》《キャンディークッキーチョコレート》《因为我是活在二次元的女孩》（4周年纪念）</div>
-                </details>
-            </div>
-        </div>
-
-        <div class="section" id="achievements">
-            <div class="section-title">成就墙</div>
-            <div class="facts-grid">
-                <div class="fact-card"><div class="label">壶男</div><div class="value">通关 50 次<br>2021.08.14</div></div>
-                <div class="fact-card"><div class="label">艾尔登法环</div><div class="value">白金奖杯<br>2022.03.17</div></div>
-                <div class="fact-card"><div class="label">空洞骑士</div><div class="value">五门通关<br>2021.06.27</div></div>
-                <div class="fact-card"><div class="label">黑魂系列</div><div class="value">全通关<br>2024.03.09</div></div>
-                <div class="fact-card"><div class="label">雀魂</div><div class="value">雀豪段位</div></div>
-                <div class="fact-card"><div class="label">平衡球</div><div class="value">通关<br>2024.02.01</div></div>
-                <div class="fact-card"><div class="label">黑神话悟空</div><div class="value">天命挑战组队赛<br>第一名 2024.08.25</div></div>
-                <div class="fact-card"><div class="label">千舰</div><div class="value">2022.02.23</div></div>
-                <div class="fact-card"><div class="label">金盾</div><div class="value">B站百万粉<br>2023.12.31</div></div>
-                <div class="fact-card"><div class="label">首次全息个唱</div><div class="value">2024.05.04</div></div>
-                <div class="fact-card"><div class="label">出演游戏</div><div class="value">魂器学院 · 节奏大师<br>雀姬 · 盲盒派对 · 旋转音律</div></div>
-                <div class="fact-card"><div class="label">原创游戏</div><div class="value">《1883 科学与灵媒》<br>Steam 上架</div></div>
-            </div>
-        </div>
-
-        <!-- ========== 2025年游戏总结 ========== -->
-        <div class="section" id="games2025">
-            <div class="section-title">2025年游戏总结</div>
-
-            <!-- 统计卡片 -->
-            <div class="facts-grid" style="margin-bottom:24px;">
-                <div class="fact-card"><div class="label">直播游戏天数</div><div class="value">302 天</div></div>
-                <div class="fact-card"><div class="label">引用录播链接</div><div class="value">375 条</div></div>
-                <div class="fact-card"><div class="label">直播游戏总数</div><div class="value">98 款</div></div>
-                <div class="fact-card"><div class="label">新播游戏</div><div class="value">91 款（含DLC）</div></div>
-                <div class="fact-card"><div class="label">直播十场以上</div><div class="value">15 款</div></div>
-                <div class="fact-card"><div class="label">仅直播一场</div><div class="value">35 款</div></div>
-            </div>
-
-            <!-- 被警告/封禁的游戏 -->
-            <div style="background:linear-gradient(135deg,#fff0f0,#ffe6e6);border-radius:16px;padding:16px 20px;margin-bottom:24px;border-left:4px solid #ff1744;">
-                <p style="font-weight:700;color:#c62828;margin-bottom:4px;">⚠️ 本年直播中被警告或封禁的游戏（5款）</p>
-                <p style="font-size:0.92rem;color:#555;">
-                    麻雀一番街 · 百日战纪：最终防卫学园 · 醉醺醺：兔兔秘密花园 · 棕色尘埃2 · Black Souls
-                </p>
-            </div>
-
-            <!-- 月度游戏列表 -->
-            <!-- 一月 -->
-            <details class="collapsible">
-                <summary>一月 · 11 款</summary>
-                <div class="body">
-                    <div class="game-list">
-                        <div class="game-item"><span class="gdate">1月2日</span><span class="gname">卡牌店模拟器 <span class="eng">(TCG Card Shop Simulator)</span></span></div>
-                        <div class="game-item"><span class="gdate">1月6日</span><span class="gname">蜗牛竞速 <span class="eng">(Snail Mail)</span></span></div>
-                        <div class="game-item"><span class="gdate">1月13日</span><span class="gname">半条命：爱莉克斯 <span class="eng">(Half-Life:Alyx)</span></span></div>
-                        <div class="game-item"><span class="gdate">1月14日</span><span class="gname">跳王 <span class="eng">(Jump King)</span></span></div>
-                        <div class="game-item"><span class="gdate">1月15日</span><span class="gname">森林冰火人 <span class="eng">(Fireboy and Watergirl: Elements)</span></span></div>
-                        <div class="game-item"><span class="gdate">1月18日</span><span class="gname"><span class="flower">💐</span> 诅咒数码相机 <span class="eng">(Cursed Digicam)</span></span></div>
-                        <div class="game-item"><span class="gdate">1月18日</span><span class="gname"><span class="flower">💐</span> 你好！我们还有场恋爱没谈 <span class="eng">(Hello Love: 18 Again)</span></span></div>
-                        <div class="game-item"><span class="gdate">1月18日</span><span class="gname"><span class="flower">💐</span> 雀魂麻将 <span class="eng">(MahjongSoul)</span></span></div>
-                        <div class="game-item"><span class="gdate">1月21日</span><span class="gname"><span class="flower">💐</span> 主播女孩重度依赖 网络梗打字通 <span class="eng">(NEEDY STREAMER OVERLOAD:Typing of The Net)</span></span></div>
-                        <div class="game-item"><span class="gdate">1月22日</span><span class="gname">中国式相亲</span></div>
-                        <div class="game-item"><span class="gdate">1月23日</span><span class="gname"><span class="flower">💐</span> 终焉之玛格诺利亚：雾中盛放之花 <span class="eng">(ENDER MAGNOLIA: Bloom in the Mist)</span></span></div>
-                    </div>
-                </div>
-            </details>
-
-            <!-- 二月 -->
-            <details class="collapsible">
-                <summary>二月 · 5 款</summary>
-                <div class="body">
-                    <div class="game-list">
-                        <div class="game-item"><span class="gdate">2月4日</span><span class="gname"><span class="flower">💐</span> 影子工厂 <span class="eng">(Impostor Factory)</span></span></div>
-                        <div class="game-item"><span class="gdate">2月12日</span><span class="gname"><span class="flower">💐</span> 去月球系列海滩特别篇 <span class="eng">(Just a To the Moon Series Beach Episode)</span></span></div>
-                        <div class="game-item"><span class="gdate">2月14日</span><span class="gname"><span class="flower">💐</span> 艾尔登法环：黑夜君临（网测）<span class="eng">(Elden Ring: Nightreign)</span></span></div>
-                        <div class="game-item"><span class="gdate">2月16日</span><span class="gname"><span class="flower">💐</span> 天国：拯救2 <span class="eng">(Kingdom Come: Deliverance II)</span></span></div>
-                        <div class="game-item"><span class="gdate">2月27日</span><span class="gname"><span class="flower">💐</span> 怪物猎人 荒野 <span class="eng">(Monster Hunter Wilds)</span></span></div>
-                    </div>
-                </div>
-            </details>
-
-            <!-- 三月 -->
-            <details class="collapsible">
-                <summary>三月 · 6 款</summary>
-                <div class="body">
-                    <div class="game-list">
-                        <div class="game-item"><span class="gdate">3月7日</span><span class="gname"><span class="flower">💐</span> 双影奇境 <span class="eng">(Split Fiction)</span></span></div>
-                        <div class="game-item"><span class="gdate">3月12日</span><span class="gname">麻雀一番街</span></div>
-                        <div class="game-item"><span class="gdate">3月19日</span><span class="gname">刺客信条：影 <span class="eng">(Assassin's Creed:Shadows)</span></span></div>
-                        <div class="game-item"><span class="gdate">3月27日</span><span class="gname"><span class="flower">💐</span> 我的小柯基-Demo <span class="eng">(My Little Puppy-Demo)</span></span></div>
-                        <div class="game-item"><span class="gdate">3月27日</span><span class="gname">第一狂战士：卡赞 <span class="eng">(The First Berserker：Khazan)</span></span></div>
-                        <div class="game-item"><span class="gdate">3月29日</span><span class="gname"><span class="flower">💐</span> 无限机兵 <span class="eng">(AI LIMIT)</span></span></div>
-                    </div>
-                </div>
-            </details>
-
-            <!-- 四月 -->
-            <details class="collapsible">
-                <summary>四月 · 9 款</summary>
-                <div class="body">
-                    <div class="game-list">
-                        <div class="game-item"><span class="gdate">4月2日</span><span class="gname">俄罗斯方块99 <span class="eng">(TETRIS 99)</span></span></div>
-                        <div class="game-item"><span class="gdate">4月4日</span><span class="gname">植物大战僵尸杂交版</span></div>
-                        <div class="game-item"><span class="gdate">4月6日</span><span class="gname">马力欧卡丁车8 豪华版 <span class="eng">(Mario Kart 8 Deluxe)</span></span></div>
-                        <div class="game-item"><span class="gdate">4月10日</span><span class="gname"><span class="flower">💐</span> 深渊绝赌：千王处刑 <span class="eng">(All in Abyss:Judge the Fake)</span></span></div>
-                        <div class="game-item"><span class="gdate">4月17日</span><span class="gname">家有恶邻 <span class="eng">(Neighbors: Suburban Warfare)</span></span></div>
-                        <div class="game-item"><span class="gdate">4月23日</span><span class="gname"><span class="flower">💐</span> 腐朽线-安迪和莉莉的棺椁（第三章）<span class="eng">(The Coffin of Andy and Leyley)</span></span></div>
-                        <div class="game-item"><span class="gdate">4月24日</span><span class="gname"><span class="flower">💐</span> 光与影：33号远征队 <span class="eng">(Clair Obscur: Expedition 33)</span></span></div>
-                        <div class="game-item"><span class="gdate">4月24日</span><span class="gname"><span class="flower">💐</span> 百日战纪：最终防卫学园 <span class="eng">(Hundred Line: Last Defense Academy)</span> <span class="warning-badge">警告</span></span></div>
-                        <div class="game-item"><span class="gdate">4月29日</span><span class="gname">植物大战僵尸改版集锦 <span class="eng">(Plant Vs Zombie)</span></span></div>
-                    </div>
-                </div>
-            </details>
-
-            <!-- 五月 -->
-            <details class="collapsible">
-                <summary>五月 · 8 款</summary>
-                <div class="body">
-                    <div class="game-list">
-                        <div class="game-item"><span class="gdate">5月5日</span><span class="gname"><span class="flower">💐</span> 兔子先生魔法秀 <span class="eng">(The Mr. Rabbit Magic Show)</span></span></div>
-                        <div class="game-item"><span class="gdate">5月6日</span><span class="gname">那不是我的邻居 <span class="eng">(That's Not My Neighbor)</span></span></div>
-                        <div class="game-item"><span class="gdate">5月8日</span><span class="gname"><span class="flower">💐</span> Cast n Chill-Demo</span></div>
-                        <div class="game-item"><span class="gdate">5月9日</span><span class="gname"><span class="flower">💐</span> 午夜幽途 <span class="eng">(The Midnight Walk)</span></span></div>
-                        <div class="game-item"><span class="gdate">5月15日</span><span class="gname">线条小狗：动物温泉 <span class="eng">(Animal Spa)</span></span></div>
-                        <div class="game-item"><span class="gdate">5月26日</span><span class="gname">失物招领模拟器 <span class="eng">(Lost But Found)</span></span></div>
-                        <div class="game-item"><span class="gdate">5月27日</span><span class="gname">思古塔加亚最后的英雄DLC <span class="eng">(The Last Hero of Nostalgaia)</span></span></div>
-                        <div class="game-item"><span class="gdate">5月30日</span><span class="gname"><span class="flower">💐</span> 艾尔登法环：黑夜君临 <span class="eng">(Elden Ring: Nightreign)</span></span></div>
-                    </div>
-                </div>
-            </details>
-
-            <!-- 六月 -->
-            <details class="collapsible">
-                <summary>六月 · 12 款</summary>
-                <div class="body">
-                    <div class="game-list">
-                        <div class="game-item"><span class="gdate">6月2日</span><span class="gname">泡姆泡姆 <span class="eng">(POPUCOM)</span></span></div>
-                        <div class="game-item"><span class="gdate">6月5日</span><span class="gname">仁王3-Demo <span class="eng">(Nioh3-Demo)</span></span></div>
-                        <div class="game-item"><span class="gdate">6月5日</span><span class="gname">马里奥赛车：世界 <span class="eng">(Mario Kart World)</span></span></div>
-                        <div class="game-item"><span class="gdate">6月6日</span><span class="gname">燕云十六声</span></div>
-                        <div class="game-item"><span class="gdate">6月7日</span><span class="gname">赛博朋克2077 <span class="eng">(Cyberpunk 2077)</span></span></div>
-                        <div class="game-item"><span class="gdate">6月9日</span><span class="gname"><span class="flower">💐</span> 合成大西瓜</span></div>
-                        <div class="game-item"><span class="gdate">6月10日</span><span class="gname">心之眼 <span class="eng">(Minds Eye)</span></span></div>
-                        <div class="game-item"><span class="gdate">6月11日</span><span class="gname"><span class="flower">💐</span> 采蘑菇模拟器-Demo <span class="eng">(Mushroom Hunter Simulator-Demo)</span></span></div>
-                        <div class="game-item"><span class="gdate">6月12日</span><span class="gname">盲盒派对</span></div>
-                        <div class="game-item"><span class="gdate">6月13日</span><span class="gname"><span class="flower">💐</span> 匹诺曹的谎言：序曲 <span class="eng">(Lies Of P Overture)</span></span></div>
-                        <div class="game-item"><span class="gdate">6月13日</span><span class="gname">长号冠军 <span class="eng">(Trombone Champ)</span></span></div>
-                        <div class="game-item"><span class="gdate">6月24日</span><span class="gname">死亡搁浅2：冥滩之上-Demo <span class="eng">(Death Stranding 2：On the Beach-Demo)</span></span></div>
-                    </div>
-                </div>
-            </details>
-
-            <!-- 七月 -->
-            <details class="collapsible">
-                <summary>七月 · 5 款</summary>
-                <div class="body">
-                    <div class="game-list">
-                        <div class="game-item"><span class="gdate">7月13日</span><span class="gname"><span class="flower">💐</span> 青鬼：蓝莓温泉的怪异 <span class="eng">(青鬼 ブルーベリー温泉の怪異)</span></span></div>
-                        <div class="game-item"><span class="gdate">7月15日</span><span class="gname">乐克乐克 <span class="eng">(Loco Roco)</span></span></div>
-                        <div class="game-item"><span class="gdate">7月21日</span><span class="gname">完蛋！我被美女包围了！2</span></div>
-                        <div class="game-item"><span class="gdate">7月22日</span><span class="gname">咚奇刚：蕉力全开 <span class="eng">(ドンキーコング バナンザ)</span></span></div>
-                        <div class="game-item"><span class="gdate">7月24日</span><span class="gname"><span class="flower">💐</span> 明末：渊虚之羽 <span class="eng">(WUCHANG: Fallen Feathers)</span></span></div>
-                    </div>
-                </div>
-            </details>
-
-            <!-- 八月 -->
-            <details class="collapsible">
-                <summary>八月 · 12 款</summary>
-                <div class="body">
-                    <div class="game-list">
-                        <div class="game-item"><span class="gdate">8月1日</span><span class="gname"><span class="flower">💐</span> 魔法少女的魔女审判 <span class="eng">(魔法少女ノ魔女裁判)</span></span></div>
-                        <div class="game-item"><span class="gdate">8月8日</span><span class="gname">四海兄弟：故乡 <span class="eng">(Mafia: The Old Country)</span></span></div>
-                        <div class="game-item"><span class="gdate">8月13日</span><span class="gname"><span class="flower">💐</span> öoo</span></div>
-                        <div class="game-item"><span class="gdate">8月15日</span><span class="gname"><span class="flower">💐</span> 仅你一人-Demo</span></div>
-                        <div class="game-item"><span class="gdate">8月17日</span><span class="gname"><span class="flower">💐</span> 異変踏切 <span class="eng">(Anomalous Railroad Crossing)</span></span></div>
-                        <div class="game-item"><span class="gdate">8月18日</span><span class="gname"><span class="flower">💐</span> 阴间推送</span></div>
-                        <div class="game-item"><span class="gdate">8月18日</span><span class="gname"><span class="flower">💐</span> 凶寓</span></div>
-                        <div class="game-item"><span class="gdate">8月21日</span><span class="gname">伊苏X <span class="eng">(イースX)</span></span></div>
-                        <div class="game-item"><span class="gdate">8月22日</span><span class="gname"><span class="flower">💐</span> 植物大战僵尸指导版</span></div>
-                        <div class="game-item"><span class="gdate">8月25日</span><span class="gname">One Hand Clapping</span></div>
-                        <div class="game-item"><span class="gdate">8月29日</span><span class="gname">牧场物语 来吧！风之繁华集市 <span class="eng">(Story Of Seasons:Welcome To The Wind's Bazaar)</span></span></div>
-                        <div class="game-item"><span class="gdate">8月30日</span><span class="gname"><span class="flower">💐</span> 拖拖拉拉小菲镇</span></div>
-                    </div>
-                </div>
-            </details>
-
-            <!-- 九月 -->
-            <details class="collapsible">
-                <summary>九月 · 8 款</summary>
-                <div class="body">
-                    <div class="game-list">
-                        <div class="game-item"><span class="gdate">9月4日</span><span class="gname"><span class="flower">💐</span> 空洞骑士：丝之歌 <span class="eng">(Hollow Knight: Silksong)</span></span></div>
-                        <div class="game-item"><span class="gdate">9月9日</span><span class="gname">纸房子</span></div>
-                        <div class="game-item"><span class="gdate">9月16日</span><span class="gname">寻找伪人 <span class="eng">(No, I'm not a Human)</span></span></div>
-                        <div class="game-item"><span class="gdate">9月19日</span><span class="gname">消逝的光芒：困兽 <span class="eng">(Dying Light The Beast)</span></span></div>
-                        <div class="game-item"><span class="gdate">9月24日</span><span class="gname"><span class="flower">💐</span> 寂静岭f <span class="eng">(SILENT HILL f)</span></span></div>
-                        <div class="game-item"><span class="gdate">9月27日</span><span class="gname">三国：谋定天下</span></div>
-                        <div class="game-item"><span class="gdate">9月27日</span><span class="gname">UNYIELDER -不屈者-</span></div>
-                        <div class="game-item"><span class="gdate">9月29日</span><span class="gname">星塔旅人「逐光测试」</span></div>
-                    </div>
-                </div>
-            </details>
-
-            <!-- 十月 -->
-            <details class="collapsible">
-                <summary>十月 · 8 款</summary>
-                <div class="body">
-                    <div class="game-list">
-                        <div class="game-item"><span class="gdate">10月1日</span><span class="gname">羊蹄山之魂 <span class="eng">(Ghost of Yōtei)</span></span></div>
-                        <div class="game-item"><span class="gdate">10月7日</span><span class="gname"><span class="flower">💐</span> 纸百合 <span class="eng">(Paper Lily)</span></span></div>
-                        <div class="game-item"><span class="gdate">10月8日</span><span class="gname">醉醺醺：兔兔秘密花园 <span class="eng">(Merry Bunny Garden)</span> <span class="warning-badge">警告</span></span></div>
-                        <div class="game-item"><span class="gdate">10月14日</span><span class="gname"><span class="flower">💐</span> 晕晕电波症候群-Demo <span class="eng">(Yunyun Syndrome!? Rhythm Psychosis-Demo)</span></span></div>
-                        <div class="game-item"><span class="gdate">10月15日</span><span class="gname"><span class="flower">💐</span> 宝可梦传说 Z-A <span class="eng">(Pokémon LEGENDS Z-A)</span></span></div>
-                        <div class="game-item"><span class="gdate">10月22日</span><span class="gname">忍者龙剑传4 <span class="eng">(NINJA GAIDEN 4)</span></span></div>
-                        <div class="game-item"><span class="gdate">10月25日</span><span class="gname">植物大战僵尸：重植版 <span class="eng">(Plants vs. Zombies: Replanted)</span></span></div>
-                        <div class="game-item"><span class="gdate">10月30日</span><span class="gname">超英派遣中心 <span class="eng">(Dispatch)</span></span></div>
-                    </div>
-                </div>
-            </details>
-
-            <!-- 十一月 -->
-            <details class="collapsible">
-                <summary>十一月 · 5 款</summary>
-                <div class="body">
-                    <div class="game-list">
-                        <div class="game-item"><span class="gdate">11月6日</span><span class="gname"><span class="flower">💐</span> 过家家 <span class="eng">(おままごと)</span></span></div>
-                        <div class="game-item"><span class="gdate">11月7日</span><span class="gname"><span class="flower">💐</span> 我的小柯基 <span class="eng">(My little puppy)</span></span></div>
-                        <div class="game-item"><span class="gdate">11月14日</span><span class="gname"><span class="flower">💐</span> 小小梦魇2 <span class="eng">(Little Nightmares II)</span></span></div>
-                        <div class="game-item"><span class="gdate">11月26日</span><span class="gname">我独自升级：起立·觉醒</span></div>
-                        <div class="game-item"><span class="gdate">11月28日</span><span class="gname">明日方舟：终末地 <span class="eng">(Arknights:Endfield)</span></span></div>
-                    </div>
-                </div>
-            </details>
-
-            <!-- 十二月 -->
-            <details class="collapsible">
-                <summary>十二月 · 9 款</summary>
-                <div class="body">
-                    <div class="game-list">
-                        <div class="game-item"><span class="gdate">12月4日</span><span class="gname"><span class="flower">💐</span> 艾尔登法环：黑夜君临DLC 见弃空洞者 <span class="eng">(Elden Ring:Nightreign The Forsaken Hollows)</span></span></div>
-                        <div class="game-item"><span class="gdate">12月5日</span><span class="gname">命运2 <span class="eng">(Destiny 2)</span></span></div>
-                        <div class="game-item"><span class="gdate">12月14日</span><span class="gname"><span class="flower">💐</span> 识质存在-Demo <span class="eng">(Pragmeta-Demo)</span></span></div>
-                        <div class="game-item"><span class="gdate">12月16日</span><span class="gname">棕色尘埃2 <span class="eng">(Brown Dust 2)</span> <span class="warning-badge">警告</span></span></div>
-                        <div class="game-item"><span class="gdate">12月18日</span><span class="gname">王冠之心 <span class="eng">(Heart Of Brown)</span></span></div>
-                        <div class="game-item"><span class="gdate">12月19日</span><span class="gname">宝可梦传说 Z-A 超次元爆涌 <span class="eng">(Pokémon LEGENDS Z-A Mega Dimension)</span></span></div>
-                        <div class="game-item"><span class="gdate">12月20日</span><span class="gname">Black Souls <span class="warning-badge">警告</span></span></div>
-                        <div class="game-item"><span class="gdate">12月23日</span><span class="gname">二重螺旋 <span class="eng">(Duet Night Abyss)</span></span></div>
-                        <div class="game-item"><span class="gdate">12月25日</span><span class="gname">原神 <span class="eng">(Genshin Impact)</span></span></div>
-                    </div>
-                </div>
-            </details>
-
-            <div style="margin-top:16px;text-align:right;font-size:0.8rem;color:#bbb;">
-                数据来源：永雏塔菲百科 · 2025年游戏总结
-            </div>
-        </div>
-        <!-- ========== 2025游戏总结结束 ========== -->
-
-        <!-- 塔菲日程表 -->
-        <div class="section" id="schedule">
-            <div class="section-title">塔菲日程</div>
-            <div class="schedule-grid">
-                <div class="schedule-card">
-                    <div class="s-date">8月12日</div>
-                    <div class="s-event">🎂 塔菲生日</div>
-                    <span class="s-tag">每年</span>
-                </div>
-                <div class="schedule-card">
-                    <div class="s-date">6月26日</div>
-                    <div class="s-event">🎉 出道纪念日</div>
-                    <span class="s-tag">每年</span>
-                </div>
-                <div class="schedule-card">
-                    <div class="s-date">2月14日</div>
-                    <div class="s-event">💕 情人节歌回</div>
-                    <span class="s-tag">预计</span>
-                </div>
-                <div class="schedule-card">
-                    <div class="s-date">12月31日</div>
-                    <div class="s-event">🎊 跨年直播</div>
-                    <span class="s-tag">预计</span>
-                </div>
-                <div class="schedule-card" style="border:2px dashed var(--pink-light);">
-                    <div class="s-date">?</div>
-                    <div class="s-event">✨ 更多活动待定</div>
-                    <span class="s-tag">关注B站动态</span>
+                <div class="acc acc--cols" data-reveal>
+                    <details class="acc__item">
+                        <summary class="acc__head"><span class="acc__idx">21</span>2021 年</summary>
+                        <div class="acc__body">《Charles》《忍者棒棒》</div>
+                    </details>
+                    <details class="acc__item">
+                        <summary class="acc__head"><span class="acc__idx">22</span>2022 年</summary>
+                        <div class="acc__body">《大正浪漫》《月光传说》《Cat Loving》《欢欢乐乐安乐死》</div>
+                    </details>
+                    <details class="acc__item">
+                        <summary class="acc__head"><span class="acc__idx">23</span>2023 年</summary>
+                        <div class="acc__body">《强风大背头》</div>
+                    </details>
+                    <details class="acc__item">
+                        <summary class="acc__head"><span class="acc__idx">24</span>2024 年</summary>
+                        <div class="acc__body">《可爱的女朋友》《呜呼、美妙的喵生》《兔子洞》《POKEDANCE》《偶像 / アイドル》《My time》《無責任集合体》</div>
+                    </details>
+                    <details class="acc__item">
+                        <summary class="acc__head"><span class="acc__idx">25</span>2025 年</summary>
+                        <div class="acc__body">《Override》《キャンディークッキーチョコレート》《因为我是活在二次元的女孩》（4 周年纪念）</div>
+                    </details>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="section">
-            <div class="quote-block">
-                "塔不灭塔不灭塔不灭！"
-                <span class="author">—— 永雏塔菲</span>
+        <!-- ================= 成就墙 ================= -->
+        <section class="section" id="achievements">
+            <div class="wrap">
+                <div class="sec-head" data-reveal>
+                    <p class="eyebrow">Achievements</p>
+                    <h2 class="sec-title">成就<em>墙</em></h2>
+                    <p class="sec-sub">游戏通关记录、里程碑与出演作品。</p>
+                </div>
+
+                <div class="ach-grid" data-reveal="stagger">
+                    <article class="ach">
+                        <p class="ach__name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>壶男</p>
+                        <p class="ach__val">通关 50 次<time>2021.08.14</time></p>
+                    </article>
+                    <article class="ach">
+                        <p class="ach__name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>艾尔登法环</p>
+                        <p class="ach__val">白金奖杯<time>2022.03.17</time></p>
+                    </article>
+                    <article class="ach">
+                        <p class="ach__name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>空洞骑士</p>
+                        <p class="ach__val">五门通关<time>2021.06.27</time></p>
+                    </article>
+                    <article class="ach">
+                        <p class="ach__name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>黑魂系列</p>
+                        <p class="ach__val">全通关<time>2024.03.09</time></p>
+                    </article>
+                    <article class="ach">
+                        <p class="ach__name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>雀魂</p>
+                        <p class="ach__val">雀豪段位</p>
+                    </article>
+                    <article class="ach">
+                        <p class="ach__name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>平衡球</p>
+                        <p class="ach__val">通关<time>2024.02.01</time></p>
+                    </article>
+                    <article class="ach">
+                        <p class="ach__name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>黑神话悟空</p>
+                        <p class="ach__val">天命挑战组队赛 第一名<time>2024.08.25</time></p>
+                    </article>
+                    <article class="ach">
+                        <p class="ach__name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>千舰</p>
+                        <p class="ach__val">千人舰队达成<time>2022.02.23</time></p>
+                    </article>
+                    <article class="ach">
+                        <p class="ach__name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>金盾</p>
+                        <p class="ach__val">B站百万粉<time>2023.12.31</time></p>
+                    </article>
+                    <article class="ach">
+                        <p class="ach__name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>首次全息个唱</p>
+                        <p class="ach__val">Ace Taffy Only 1st Live<time>2024.05.04</time></p>
+                    </article>
+                    <article class="ach">
+                        <p class="ach__name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>出演游戏</p>
+                        <p class="ach__val">魂器学院 · 节奏大师 · 雀姬 · 盲盒派对 · 旋转音律</p>
+                    </article>
+                    <article class="ach">
+                        <p class="ach__name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>原创游戏</p>
+                        <p class="ach__val">《1883 科学与灵媒》Steam 上架</p>
+                    </article>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="section" id="links">
-            <div class="section-title">塔菲全平台链接</div>
-            <div class="link-cards">
-                <a class="link-card" href="https://space.bilibili.com/1265680561" target="_blank">B站空间</a>
-                <a class="link-card" href="https://live.bilibili.com/22603245" target="_blank">B站直播间</a>
-                <a class="link-card" href="https://www.youtube.com/channel/UC-WTKBWDsp0PFcGmmuO7svg" target="_blank">YouTube</a>
-                <a class="link-card" href="https://weibo.com/7618923072" target="_blank">微博</a>
-                <a class="link-card" href="https://twitter.com/AceTaffy812" target="_blank">Twitter</a>
-                <a class="link-card" href="https://www.xiaohongshu.com/user/profile/681f2206000000000e010c96" target="_blank">小红书</a>
-                <a class="link-card" href="https://music.163.com/#/artist?id=57059574" target="_blank">网易云音乐</a>
-                <a class="link-card" href="https://y.qq.com/n/ryqq/singer/002rjVPW05pN0s" target="_blank">QQ音乐</a>
-                <!-- <a class="link-card" href="https://acetaffy.org" target="_blank">塔菲百科</a> -->
+        <!-- ================= 2025 游戏总结 ================= -->
+        <section class="section" id="games2025">
+            <div class="wrap wrap--wide">
+                <div class="sec-head" data-reveal>
+                    <p class="eyebrow">2025 Recap</p>
+                    <h2 class="sec-title">2025 年<em>游戏总结</em></h2>
+                    <p class="sec-sub">302 个直播游戏日，98 款游戏 —— 这一年塔菲真的很忙。</p>
+                </div>
+
+                <div class="metrics" data-reveal="stagger">
+                    <article class="metric">
+                        <p class="metric__num"><span data-count="302">302</span><span class="metric__unit">天</span></p>
+                        <p class="metric__label">直播游戏天数</p>
+                    </article>
+                    <article class="metric">
+                        <p class="metric__num"><span data-count="375">375</span><span class="metric__unit">条</span></p>
+                        <p class="metric__label">引用录播链接</p>
+                    </article>
+                    <article class="metric">
+                        <p class="metric__num"><span data-count="98">98</span><span class="metric__unit">款</span></p>
+                        <p class="metric__label">直播游戏总数</p>
+                    </article>
+                    <article class="metric">
+                        <p class="metric__num"><span data-count="91">91</span><span class="metric__unit">款</span></p>
+                        <p class="metric__label">新播游戏（含 DLC）</p>
+                    </article>
+                    <article class="metric">
+                        <p class="metric__num"><span data-count="15">15</span><span class="metric__unit">款</span></p>
+                        <p class="metric__label">直播十场以上</p>
+                    </article>
+                    <article class="metric">
+                        <p class="metric__num"><span data-count="35">35</span><span class="metric__unit">款</span></p>
+                        <p class="metric__label">仅直播一场</p>
+                    </article>
+                </div>
+
+                <div class="notice" style="margin-top:clamp(22px,3vw,32px)" data-reveal>
+                    <span class="notice__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 8.5v4.5M12 16.2v.1" />
+                            <path d="M10.3 4.2L2.6 17.5A2 2 0 004.3 20.5h15.4a2 2 0 001.7-3L13.7 4.2a2 2 0 00-3.4 0z" />
+                        </svg>
+                    </span>
+                    <div>
+                        <p class="notice__title">本年直播中被警告或封禁的游戏（5 款）</p>
+                        <p class="notice__text">麻雀一番街 · 百日战纪：最终防卫学园 · 醉醺醺：兔兔秘密花园 · 棕色尘埃2 · Black Souls</p>
+                    </div>
+                </div>
+
+                <div data-reveal>
+                    <div class="segmented" id="gmTabs" role="tablist" aria-label="按月查看游戏列表">
+                        <span class="segmented__thumb" aria-hidden="true"></span>
+                        <button role="tab" aria-selected="true" data-panel="gm-1">一月</button>
+                        <button role="tab" aria-selected="false" data-panel="gm-2">二月</button>
+                        <button role="tab" aria-selected="false" data-panel="gm-3">三月</button>
+                        <button role="tab" aria-selected="false" data-panel="gm-4">四月</button>
+                        <button role="tab" aria-selected="false" data-panel="gm-5">五月</button>
+                        <button role="tab" aria-selected="false" data-panel="gm-6">六月</button>
+                        <button role="tab" aria-selected="false" data-panel="gm-7">七月</button>
+                        <button role="tab" aria-selected="false" data-panel="gm-8">八月</button>
+                        <button role="tab" aria-selected="false" data-panel="gm-9">九月</button>
+                        <button role="tab" aria-selected="false" data-panel="gm-10">十月</button>
+                        <button role="tab" aria-selected="false" data-panel="gm-11">十一月</button>
+                        <button role="tab" aria-selected="false" data-panel="gm-12">十二月</button>
+                    </div>
+
+                    <div class="tl-panels">
+                        <!-- 一月 -->
+                        <div class="tl-panel is-active" id="gm-1" role="tabpanel">
+                            <div class="tl-year-head"><h3>一月</h3><p>11 款</p></div>
+                            <div class="games">
+                                <div class="game"><span class="game__day">1/2</span><span class="game__name">卡牌店模拟器<span class="game__eng">TCG Card Shop Simulator</span></span></div>
+                                <div class="game"><span class="game__day">1/6</span><span class="game__name">蜗牛竞速<span class="game__eng">Snail Mail</span></span></div>
+                                <div class="game"><span class="game__day">1/13</span><span class="game__name">半条命：爱莉克斯<span class="game__eng">Half-Life: Alyx</span></span></div>
+                                <div class="game"><span class="game__day">1/14</span><span class="game__name">跳王<span class="game__eng">Jump King</span></span></div>
+                                <div class="game"><span class="game__day">1/15</span><span class="game__name">森林冰火人<span class="game__eng">Fireboy and Watergirl: Elements</span></span></div>
+                                <div class="game"><span class="game__day">1/18</span><span class="game__name"><span class="game__star">💐</span>诅咒数码相机<span class="game__eng">Cursed Digicam</span></span></div>
+                                <div class="game"><span class="game__day">1/18</span><span class="game__name"><span class="game__star">💐</span>你好！我们还有场恋爱没谈<span class="game__eng">Hello Love: 18 Again</span></span></div>
+                                <div class="game"><span class="game__day">1/18</span><span class="game__name"><span class="game__star">💐</span>雀魂麻将<span class="game__eng">MahjongSoul</span></span></div>
+                                <div class="game"><span class="game__day">1/21</span><span class="game__name"><span class="game__star">💐</span>主播女孩重度依赖 网络梗打字通<span class="game__eng">NEEDY STREAMER OVERLOAD: Typing of The Net</span></span></div>
+                                <div class="game"><span class="game__day">1/22</span><span class="game__name">中国式相亲</span></div>
+                                <div class="game"><span class="game__day">1/23</span><span class="game__name"><span class="game__star">💐</span>终焉之玛格诺利亚：雾中盛放之花<span class="game__eng">ENDER MAGNOLIA: Bloom in the Mist</span></span></div>
+                            </div>
+                        </div>
+
+                        <!-- 二月 -->
+                        <div class="tl-panel" id="gm-2" role="tabpanel">
+                            <div class="tl-year-head"><h3>二月</h3><p>5 款</p></div>
+                            <div class="games">
+                                <div class="game"><span class="game__day">2/4</span><span class="game__name"><span class="game__star">💐</span>影子工厂<span class="game__eng">Impostor Factory</span></span></div>
+                                <div class="game"><span class="game__day">2/12</span><span class="game__name"><span class="game__star">💐</span>去月球系列海滩特别篇<span class="game__eng">Just a To the Moon Series Beach Episode</span></span></div>
+                                <div class="game"><span class="game__day">2/14</span><span class="game__name"><span class="game__star">💐</span>艾尔登法环：黑夜君临（网测）<span class="game__eng">Elden Ring: Nightreign</span></span></div>
+                                <div class="game"><span class="game__day">2/16</span><span class="game__name"><span class="game__star">💐</span>天国：拯救 2<span class="game__eng">Kingdom Come: Deliverance II</span></span></div>
+                                <div class="game"><span class="game__day">2/27</span><span class="game__name"><span class="game__star">💐</span>怪物猎人 荒野<span class="game__eng">Monster Hunter Wilds</span></span></div>
+                            </div>
+                        </div>
+
+                        <!-- 三月 -->
+                        <div class="tl-panel" id="gm-3" role="tabpanel">
+                            <div class="tl-year-head"><h3>三月</h3><p>6 款</p></div>
+                            <div class="games">
+                                <div class="game"><span class="game__day">3/7</span><span class="game__name"><span class="game__star">💐</span>双影奇境<span class="game__eng">Split Fiction</span></span></div>
+                                <div class="game"><span class="game__day">3/12</span><span class="game__name">麻雀一番街</span></div>
+                                <div class="game"><span class="game__day">3/19</span><span class="game__name">刺客信条：影<span class="game__eng">Assassin's Creed: Shadows</span></span></div>
+                                <div class="game"><span class="game__day">3/27</span><span class="game__name"><span class="game__star">💐</span>我的小柯基 - Demo<span class="game__eng">My Little Puppy - Demo</span></span></div>
+                                <div class="game"><span class="game__day">3/27</span><span class="game__name">第一狂战士：卡赞<span class="game__eng">The First Berserker: Khazan</span></span></div>
+                                <div class="game"><span class="game__day">3/29</span><span class="game__name"><span class="game__star">💐</span>无限机兵<span class="game__eng">AI LIMIT</span></span></div>
+                            </div>
+                        </div>
+
+                        <!-- 四月 -->
+                        <div class="tl-panel" id="gm-4" role="tabpanel">
+                            <div class="tl-year-head"><h3>四月</h3><p>9 款</p></div>
+                            <div class="games">
+                                <div class="game"><span class="game__day">4/2</span><span class="game__name">俄罗斯方块 99<span class="game__eng">TETRIS 99</span></span></div>
+                                <div class="game"><span class="game__day">4/4</span><span class="game__name">植物大战僵尸杂交版</span></div>
+                                <div class="game"><span class="game__day">4/6</span><span class="game__name">马力欧卡丁车 8 豪华版<span class="game__eng">Mario Kart 8 Deluxe</span></span></div>
+                                <div class="game"><span class="game__day">4/10</span><span class="game__name"><span class="game__star">💐</span>深渊绝赌：千王处刑<span class="game__eng">All in Abyss: Judge the Fake</span></span></div>
+                                <div class="game"><span class="game__day">4/17</span><span class="game__name">家有恶邻<span class="game__eng">Neighbors: Suburban Warfare</span></span></div>
+                                <div class="game"><span class="game__day">4/23</span><span class="game__name"><span class="game__star">💐</span>腐朽线 - 安迪和莉莉的棺椁（第三章）<span class="game__eng">The Coffin of Andy and Leyley</span></span></div>
+                                <div class="game"><span class="game__day">4/24</span><span class="game__name"><span class="game__star">💐</span>光与影：33 号远征队<span class="game__eng">Clair Obscur: Expedition 33</span></span></div>
+                                <div class="game"><span class="game__day">4/24</span><span class="game__name"><span class="game__star">💐</span>百日战纪：最终防卫学园<span class="game__eng">Hundred Line: Last Defense Academy</span><span class="badge-warn">警告</span></span></div>
+                                <div class="game"><span class="game__day">4/29</span><span class="game__name">植物大战僵尸改版集锦<span class="game__eng">Plant Vs Zombie</span></span></div>
+                            </div>
+                        </div>
+
+                        <!-- 五月 -->
+                        <div class="tl-panel" id="gm-5" role="tabpanel">
+                            <div class="tl-year-head"><h3>五月</h3><p>8 款</p></div>
+                            <div class="games">
+                                <div class="game"><span class="game__day">5/5</span><span class="game__name"><span class="game__star">💐</span>兔子先生魔法秀<span class="game__eng">The Mr. Rabbit Magic Show</span></span></div>
+                                <div class="game"><span class="game__day">5/6</span><span class="game__name">那不是我的邻居<span class="game__eng">That's Not My Neighbor</span></span></div>
+                                <div class="game"><span class="game__day">5/8</span><span class="game__name"><span class="game__star">💐</span>Cast n Chill - Demo</span></div>
+                                <div class="game"><span class="game__day">5/9</span><span class="game__name"><span class="game__star">💐</span>午夜幽途<span class="game__eng">The Midnight Walk</span></span></div>
+                                <div class="game"><span class="game__day">5/15</span><span class="game__name">线条小狗：动物温泉<span class="game__eng">Animal Spa</span></span></div>
+                                <div class="game"><span class="game__day">5/26</span><span class="game__name">失物招领模拟器<span class="game__eng">Lost But Found</span></span></div>
+                                <div class="game"><span class="game__day">5/27</span><span class="game__name">思古塔加亚最后的英雄 DLC<span class="game__eng">The Last Hero of Nostalgaia</span></span></div>
+                                <div class="game"><span class="game__day">5/30</span><span class="game__name"><span class="game__star">💐</span>艾尔登法环：黑夜君临<span class="game__eng">Elden Ring: Nightreign</span></span></div>
+                            </div>
+                        </div>
+
+                        <!-- 六月 -->
+                        <div class="tl-panel" id="gm-6" role="tabpanel">
+                            <div class="tl-year-head"><h3>六月</h3><p>12 款</p></div>
+                            <div class="games">
+                                <div class="game"><span class="game__day">6/2</span><span class="game__name">泡姆泡姆<span class="game__eng">POPUCOM</span></span></div>
+                                <div class="game"><span class="game__day">6/5</span><span class="game__name">仁王 3 - Demo<span class="game__eng">Nioh 3 - Demo</span></span></div>
+                                <div class="game"><span class="game__day">6/5</span><span class="game__name">马里奥赛车：世界<span class="game__eng">Mario Kart World</span></span></div>
+                                <div class="game"><span class="game__day">6/6</span><span class="game__name">燕云十六声</span></div>
+                                <div class="game"><span class="game__day">6/7</span><span class="game__name">赛博朋克 2077<span class="game__eng">Cyberpunk 2077</span></span></div>
+                                <div class="game"><span class="game__day">6/9</span><span class="game__name"><span class="game__star">💐</span>合成大西瓜</span></div>
+                                <div class="game"><span class="game__day">6/10</span><span class="game__name">心之眼<span class="game__eng">Minds Eye</span></span></div>
+                                <div class="game"><span class="game__day">6/11</span><span class="game__name"><span class="game__star">💐</span>采蘑菇模拟器 - Demo<span class="game__eng">Mushroom Hunter Simulator - Demo</span></span></div>
+                                <div class="game"><span class="game__day">6/12</span><span class="game__name">盲盒派对</span></div>
+                                <div class="game"><span class="game__day">6/13</span><span class="game__name"><span class="game__star">💐</span>匹诺曹的谎言：序曲<span class="game__eng">Lies Of P Overture</span></span></div>
+                                <div class="game"><span class="game__day">6/13</span><span class="game__name">长号冠军<span class="game__eng">Trombone Champ</span></span></div>
+                                <div class="game"><span class="game__day">6/24</span><span class="game__name">死亡搁浅 2：冥滩之上 - Demo<span class="game__eng">Death Stranding 2: On the Beach - Demo</span></span></div>
+                            </div>
+                        </div>
+
+                        <!-- 七月 -->
+                        <div class="tl-panel" id="gm-7" role="tabpanel">
+                            <div class="tl-year-head"><h3>七月</h3><p>5 款</p></div>
+                            <div class="games">
+                                <div class="game"><span class="game__day">7/13</span><span class="game__name"><span class="game__star">💐</span>青鬼：蓝莓温泉的怪异<span class="game__eng">青鬼 ブルーベリー温泉の怪異</span></span></div>
+                                <div class="game"><span class="game__day">7/15</span><span class="game__name">乐克乐克<span class="game__eng">Loco Roco</span></span></div>
+                                <div class="game"><span class="game__day">7/21</span><span class="game__name">完蛋！我被美女包围了！2</span></div>
+                                <div class="game"><span class="game__day">7/22</span><span class="game__name">咚奇刚：蕉力全开<span class="game__eng">ドンキーコング バナンザ</span></span></div>
+                                <div class="game"><span class="game__day">7/24</span><span class="game__name"><span class="game__star">💐</span>明末：渊虚之羽<span class="game__eng">WUCHANG: Fallen Feathers</span></span></div>
+                            </div>
+                        </div>
+
+                        <!-- 八月 -->
+                        <div class="tl-panel" id="gm-8" role="tabpanel">
+                            <div class="tl-year-head"><h3>八月</h3><p>12 款</p></div>
+                            <div class="games">
+                                <div class="game"><span class="game__day">8/1</span><span class="game__name"><span class="game__star">💐</span>魔法少女的魔女审判<span class="game__eng">魔法少女ノ魔女裁判</span></span></div>
+                                <div class="game"><span class="game__day">8/8</span><span class="game__name">四海兄弟：故乡<span class="game__eng">Mafia: The Old Country</span></span></div>
+                                <div class="game"><span class="game__day">8/13</span><span class="game__name"><span class="game__star">💐</span>öoo</span></div>
+                                <div class="game"><span class="game__day">8/15</span><span class="game__name"><span class="game__star">💐</span>仅你一人 - Demo</span></div>
+                                <div class="game"><span class="game__day">8/17</span><span class="game__name"><span class="game__star">💐</span>異変踏切<span class="game__eng">Anomalous Railroad Crossing</span></span></div>
+                                <div class="game"><span class="game__day">8/18</span><span class="game__name"><span class="game__star">💐</span>阴间推送</span></div>
+                                <div class="game"><span class="game__day">8/18</span><span class="game__name"><span class="game__star">💐</span>凶寓</span></div>
+                                <div class="game"><span class="game__day">8/21</span><span class="game__name">伊苏 X<span class="game__eng">イースX</span></span></div>
+                                <div class="game"><span class="game__day">8/22</span><span class="game__name"><span class="game__star">💐</span>植物大战僵尸指导版</span></div>
+                                <div class="game"><span class="game__day">8/25</span><span class="game__name">One Hand Clapping</span></div>
+                                <div class="game"><span class="game__day">8/29</span><span class="game__name">牧场物语 来吧！风之繁华集市<span class="game__eng">Story Of Seasons: Welcome To The Wind's Bazaar</span></span></div>
+                                <div class="game"><span class="game__day">8/30</span><span class="game__name"><span class="game__star">💐</span>拖拖拉拉小菲镇</span></div>
+                            </div>
+                        </div>
+
+                        <!-- 九月 -->
+                        <div class="tl-panel" id="gm-9" role="tabpanel">
+                            <div class="tl-year-head"><h3>九月</h3><p>8 款</p></div>
+                            <div class="games">
+                                <div class="game"><span class="game__day">9/4</span><span class="game__name"><span class="game__star">💐</span>空洞骑士：丝之歌<span class="game__eng">Hollow Knight: Silksong</span></span></div>
+                                <div class="game"><span class="game__day">9/9</span><span class="game__name">纸房子</span></div>
+                                <div class="game"><span class="game__day">9/16</span><span class="game__name">寻找伪人<span class="game__eng">No, I'm not a Human</span></span></div>
+                                <div class="game"><span class="game__day">9/19</span><span class="game__name">消逝的光芒：困兽<span class="game__eng">Dying Light The Beast</span></span></div>
+                                <div class="game"><span class="game__day">9/24</span><span class="game__name"><span class="game__star">💐</span>寂静岭 f<span class="game__eng">SILENT HILL f</span></span></div>
+                                <div class="game"><span class="game__day">9/27</span><span class="game__name">三国：谋定天下</span></div>
+                                <div class="game"><span class="game__day">9/27</span><span class="game__name">UNYIELDER - 不屈者 -</span></div>
+                                <div class="game"><span class="game__day">9/29</span><span class="game__name">星塔旅人「逐光测试」</span></div>
+                            </div>
+                        </div>
+
+                        <!-- 十月 -->
+                        <div class="tl-panel" id="gm-10" role="tabpanel">
+                            <div class="tl-year-head"><h3>十月</h3><p>8 款</p></div>
+                            <div class="games">
+                                <div class="game"><span class="game__day">10/1</span><span class="game__name">羊蹄山之魂<span class="game__eng">Ghost of Yōtei</span></span></div>
+                                <div class="game"><span class="game__day">10/7</span><span class="game__name"><span class="game__star">💐</span>纸百合<span class="game__eng">Paper Lily</span></span></div>
+                                <div class="game"><span class="game__day">10/8</span><span class="game__name">醉醺醺：兔兔秘密花园<span class="game__eng">Merry Bunny Garden</span><span class="badge-warn">警告</span></span></div>
+                                <div class="game"><span class="game__day">10/14</span><span class="game__name"><span class="game__star">💐</span>晕晕电波症候群 - Demo<span class="game__eng">Yunyun Syndrome!? Rhythm Psychosis - Demo</span></span></div>
+                                <div class="game"><span class="game__day">10/15</span><span class="game__name"><span class="game__star">💐</span>宝可梦传说 Z-A<span class="game__eng">Pokémon LEGENDS Z-A</span></span></div>
+                                <div class="game"><span class="game__day">10/22</span><span class="game__name">忍者龙剑传 4<span class="game__eng">NINJA GAIDEN 4</span></span></div>
+                                <div class="game"><span class="game__day">10/25</span><span class="game__name">植物大战僵尸：重植版<span class="game__eng">Plants vs. Zombies: Replanted</span></span></div>
+                                <div class="game"><span class="game__day">10/30</span><span class="game__name">超英派遣中心<span class="game__eng">Dispatch</span></span></div>
+                            </div>
+                        </div>
+
+                        <!-- 十一月 -->
+                        <div class="tl-panel" id="gm-11" role="tabpanel">
+                            <div class="tl-year-head"><h3>十一月</h3><p>5 款</p></div>
+                            <div class="games">
+                                <div class="game"><span class="game__day">11/6</span><span class="game__name"><span class="game__star">💐</span>过家家<span class="game__eng">おままごと</span></span></div>
+                                <div class="game"><span class="game__day">11/7</span><span class="game__name"><span class="game__star">💐</span>我的小柯基<span class="game__eng">My little puppy</span></span></div>
+                                <div class="game"><span class="game__day">11/14</span><span class="game__name"><span class="game__star">💐</span>小小梦魇 2<span class="game__eng">Little Nightmares II</span></span></div>
+                                <div class="game"><span class="game__day">11/26</span><span class="game__name">我独自升级：起立·觉醒</span></div>
+                                <div class="game"><span class="game__day">11/28</span><span class="game__name">明日方舟：终末地<span class="game__eng">Arknights: Endfield</span></span></div>
+                            </div>
+                        </div>
+
+                        <!-- 十二月 -->
+                        <div class="tl-panel" id="gm-12" role="tabpanel">
+                            <div class="tl-year-head"><h3>十二月</h3><p>9 款</p></div>
+                            <div class="games">
+                                <div class="game"><span class="game__day">12/4</span><span class="game__name"><span class="game__star">💐</span>艾尔登法环：黑夜君临 DLC 见弃空洞者<span class="game__eng">Elden Ring: Nightreign The Forsaken Hollows</span></span></div>
+                                <div class="game"><span class="game__day">12/5</span><span class="game__name">命运 2<span class="game__eng">Destiny 2</span></span></div>
+                                <div class="game"><span class="game__day">12/14</span><span class="game__name"><span class="game__star">💐</span>识质存在 - Demo<span class="game__eng">Pragmeta - Demo</span></span></div>
+                                <div class="game"><span class="game__day">12/16</span><span class="game__name">棕色尘埃 2<span class="game__eng">Brown Dust 2</span><span class="badge-warn">警告</span></span></div>
+                                <div class="game"><span class="game__day">12/18</span><span class="game__name">王冠之心<span class="game__eng">Heart Of Brown</span></span></div>
+                                <div class="game"><span class="game__day">12/19</span><span class="game__name">宝可梦传说 Z-A 超次元爆涌<span class="game__eng">Pokémon LEGENDS Z-A Mega Dimension</span></span></div>
+                                <div class="game"><span class="game__day">12/20</span><span class="game__name">Black Souls<span class="badge-warn">警告</span></span></div>
+                                <div class="game"><span class="game__day">12/23</span><span class="game__name">二重螺旋<span class="game__eng">Duet Night Abyss</span></span></div>
+                                <div class="game"><span class="game__day">12/25</span><span class="game__name">原神<span class="game__eng">Genshin Impact</span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="src-note" data-reveal>数据来源：永雏塔菲百科 · 2025 年游戏总结</p>
             </div>
-        </div>
+        </section>
 
-        <div class="section">
-            <div class="section-title">致雏草姬</div>
-            <div class="story" style="text-align:center;">
-                <p style="font-size:1.1rem;">
-                    如果你也被这位来自 1868 年威尔士的粉毛侦探俘获了心<br>
-                    欢迎加入雏草姬的行列
-                </p>
-                <p>
-                    <strong>B站直播间：</strong><a href="https://live.bilibili.com/22603245" target="_blank">22603245</a><br>
-                    <strong>B站空间：</strong><a href="https://space.bilibili.com/1265680561" target="_blank">UID 1265680561</a>
-                </p>
-                <br>
-                <p style="font-size:1.3rem;font-weight:700;color:var(--pink-dark);">
-                    关注永雏塔菲！关注永雏塔菲谢谢喵！
-                </p>
+        <!-- ================= 日程 ================= -->
+        <section class="section" id="schedule">
+            <div class="wrap">
+                <div class="sec-head" data-reveal>
+                    <p class="eyebrow">Schedule</p>
+                    <h2 class="sec-title">塔菲<em>日程</em></h2>
+                    <p class="sec-sub">每年固定的几个大日子，别错过。</p>
+                </div>
+
+                <div class="sched" data-reveal="stagger">
+                    <article class="sched__card" data-date="08-12">
+                        <p class="sched__date">8 月 12 日</p>
+                        <p class="sched__event">🎂 塔菲生日</p>
+                        <span class="sched__tag">每年</span>
+                        <p class="sched__days"></p>
+                    </article>
+                    <article class="sched__card" data-date="06-26">
+                        <p class="sched__date">6 月 26 日</p>
+                        <p class="sched__event">🎉 出道纪念日</p>
+                        <span class="sched__tag">每年</span>
+                        <p class="sched__days"></p>
+                    </article>
+                    <article class="sched__card" data-date="02-14">
+                        <p class="sched__date">2 月 14 日</p>
+                        <p class="sched__event">💕 情人节歌回</p>
+                        <span class="sched__tag">预计</span>
+                        <p class="sched__days"></p>
+                    </article>
+                    <article class="sched__card" data-date="12-31">
+                        <p class="sched__date">12 月 31 日</p>
+                        <p class="sched__event">🎊 跨年直播</p>
+                        <span class="sched__tag">预计</span>
+                        <p class="sched__days"></p>
+                    </article>
+                    <article class="sched__card sched__card--ghost">
+                        <p class="sched__date">?</p>
+                        <p class="sched__event">✨ 更多活动待定</p>
+                        <span class="sched__tag">关注 B 站动态</span>
+                    </article>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- ===== 应援留言板 ===== -->
-        <div class="section" id="guestbook">
-            <div class="section-title">💬 应援留言板</div>
-            <div style="background:var(--card-bg);border-radius:20px;padding:24px;box-shadow:0 8px 32px rgba(240,98,146,0.08);">
-                <div id="guestbook-list"></div>
-                <div style="text-align:center;margin-top:16px;">
-                    <a class="gb-btn" href="https://github.com/ciallo0721-cmd/tf/issues/new?labels=应援留言&title=💐 我想说..." target="_blank">
-                        ✏️ 发表应援留言
+        <!-- ================= 名言 ================= -->
+        <section class="section">
+            <div class="wrap">
+                <div class="quote" data-reveal="zoom">
+                    <p class="quote__mark" aria-hidden="true">“</p>
+                    <p class="quote__text">塔不灭塔不灭塔不灭！</p>
+                    <cite class="quote__cite">—— 永雏塔菲</cite>
+                    <div class="quote__actions">
+                        <button class="btn btn--ghost btn--sm" id="shareWeibo">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>
+                            分享到微博
+                        </button>
+                        <button class="btn btn--ghost btn--sm" id="shareQQ">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>
+                            分享到 QQ
+                        </button>
+                        <button class="btn btn--ghost btn--sm" id="shareTwitter">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>
+                            分享到 X
+                        </button>
+                        <button class="btn btn--ghost btn--sm" id="copyLink">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <rect x="9" y="9" width="11" height="11" rx="2.5" />
+                                <path d="M15 9V6.5A2.5 2.5 0 0012.5 4h-6A2.5 2.5 0 004 6.5v6A2.5 2.5 0 006.5 15H9" />
+                            </svg>
+                            复制链接
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 全平台链接 ================= -->
+        <section class="section" id="links">
+            <div class="wrap">
+                <div class="sec-head" data-reveal>
+                    <p class="eyebrow">Links</p>
+                    <h2 class="sec-title">全平台<em>链接</em></h2>
+                    <p class="sec-sub">想追塔菲，这些地方都能找到她。</p>
+                </div>
+
+                <div class="tiles" data-reveal="stagger">
+                    <a class="tile" href="https://space.bilibili.com/1265680561" target="_blank" rel="noopener">
+                        <span class="tile__dot">B</span>
+                        <span class="tile__meta">B站空间<small>UID 1265680561</small></span>
                     </a>
-                    <p style="margin-top:8px;font-size:0.8rem;color:#aaa;">通过 GitHub Issues 提交，需要 GitHub 账号</p>
+                    <a class="tile" href="https://live.bilibili.com/22603245" target="_blank" rel="noopener">
+                        <span class="tile__dot">直</span>
+                        <span class="tile__meta">B站直播间<small>22603245</small></span>
+                    </a>
+                    <a class="tile" href="https://www.youtube.com/channel/UC-WTKBWDsp0PFcGmmuO7svg" target="_blank" rel="noopener">
+                        <span class="tile__dot">YT</span>
+                        <span class="tile__meta">YouTube</span>
+                    </a>
+                    <a class="tile" href="https://weibo.com/7618923072" target="_blank" rel="noopener">
+                        <span class="tile__dot">微</span>
+                        <span class="tile__meta">微博</span>
+                    </a>
+                    <a class="tile" href="https://twitter.com/AceTaffy812" target="_blank" rel="noopener">
+                        <span class="tile__dot">X</span>
+                        <span class="tile__meta">Twitter</span>
+                    </a>
+                    <a class="tile" href="https://www.xiaohongshu.com/user/profile/681f2206000000000e010c96" target="_blank" rel="noopener">
+                        <span class="tile__dot">小</span>
+                        <span class="tile__meta">小红书</span>
+                    </a>
+                    <a class="tile" href="https://music.163.com/#/artist?id=57059574" target="_blank" rel="noopener">
+                        <span class="tile__dot">网</span>
+                        <span class="tile__meta">网易云音乐<small>歌手主页</small></span>
+                    </a>
+                    <a class="tile" href="https://y.qq.com/n/ryqq/singer/002rjVPW05pN0s" target="_blank" rel="noopener">
+                        <span class="tile__dot">Q</span>
+                        <span class="tile__meta">QQ 音乐<small>歌手主页</small></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 致雏草姬 ================= -->
+        <section class="section">
+            <div class="wrap">
+                <div class="cta" data-reveal="zoom">
+                    <h2 class="cta__title">致雏草姬</h2>
+                    <p class="cta__text">
+                        如果你也被这位来自 1868 年威尔士的粉毛侦探俘获了心，<br />
+                        欢迎加入雏草姬的行列。
+                    </p>
+                    <div class="cta__actions">
+                        <a class="btn btn--onbrand" href="https://live.bilibili.com/22603245" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M4 6.5h16v12H4zM8 6.5L6 3.5M16 6.5l2-3" />
+                                <path d="M10.5 11v3M13.5 11v3" />
+                            </svg>
+                            直播间 22603245
+                        </a>
+                        <a class="btn btn--outline-light" href="https://space.bilibili.com/1265680561" target="_blank" rel="noopener">
+                            B站空间 UID 1265680561
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 留言板 ================= -->
+        <section class="section" id="guestbook">
+            <div class="wrap wrap--narrow">
+                <div class="sec-head" data-reveal>
+                    <p class="eyebrow">Guestbook</p>
+                    <h2 class="sec-title">应援<em>留言板</em></h2>
+                    <p class="sec-sub">来自雏草姬的声音。</p>
+                </div>
+
+                <div class="card card__pad" data-reveal>
+                    <div class="gb__list" id="guestbook-list">
+                        <div class="gb__loading">加载留言中…</div>
+                    </div>
+                    <div class="gb__foot">
+                        <a class="btn btn--primary"
+                            href="https://github.com/ciallo0721-cmd/tf/issues/new?labels=%E5%BA%94%E6%8F%B4%E7%95%99%E8%A8%80&title=%F0%9F%92%90%20%E6%88%91%E6%83%B3%E8%AF%B4..."
+                            target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M4 20h4L20 8l-4-4L4 16v4z" />
+                                <path d="M14 6l4 4" />
+                            </svg>
+                            发表应援留言
+                        </a>
+                        <p class="gb__hint">通过 GitHub Issues 提交，需要 GitHub 账号</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 评论区 ================= -->
+        <section class="section" id="comments">
+            <div class="wrap wrap--narrow">
+                <div class="sec-head" data-reveal>
+                    <p class="eyebrow">Comments</p>
+                    <h2 class="sec-title">评论<em>区</em></h2>
+                </div>
+                <div class="card card__pad giscus-wrap" data-reveal>
+                    <div id="giscus-container"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 免责声明 ================= -->
+        <section class="section" id="disclaimer">
+            <div class="wrap wrap--narrow">
+                <div class="sec-head" data-reveal>
+                    <p class="eyebrow">Legal</p>
+                    <h2 class="sec-title">免责与<em>版权声明</em></h2>
+                </div>
+
+                <div class="legal card card__pad" data-reveal>
+                    <div class="legal__block">
+                        <h3>非官方性质声明</h3>
+                        <p>本站（关注塔菲谢谢喵）是由粉丝自发建立和维护的非盈利性应援站点，并非永雏塔菲或上海澈诺（CherryNova）的官方网站。本站与永雏塔菲及其所属机构无任何直接关联、隶属或商业合作关系。</p>
+                    </div>
+
+                    <div class="legal__block">
+                        <h3>知识产权与版权声明</h3>
+                        <p>本站内使用的所有与永雏塔菲相关的立绘、Logo、视频截图、设定图等素材，其版权均归属于永雏塔菲、上海澈诺或原作者所有。本站仅基于
+                            <a href="https://zh.wikipedia.org/wiki/%E5%90%88%E7%90%86%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener">合理使用</a>
+                            原则，用于整理、介绍与评论目的。
+                        </p>
+                        <p style="margin-top:8px">除特别声明外，本站原创文字内容采用
+                            <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="noopener">知识共享 署名-相同方式共享 4.0 国际许可协议 (CC BY-SA 4.0)</a>
+                            授权。转载时请务必注明出处。
+                        </p>
+                    </div>
+
+                    <div class="legal__block">
+                        <h3>内容准确性</h3>
+                        <p>本站内容由粉丝编辑整理，属于用户生成内容（UGC）。我们尽力确保信息准确，但不对内容的真实性、完整性或及时性做出任何保证。因使用本站信息而产生的任何损失，本站管理组不承担法律责任。</p>
+                    </div>
+
+                    <div class="legal__block">
+                        <h3>第三方链接</h3>
+                        <p>本站可能包含指向第三方网站（如 Bilibili、微博、萌娘百科等）的链接，其内容与隐私策略不受本站控制，点击风险由用户自行承担。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= 页脚 ================= -->
+    <footer class="footer">
+        <div class="wrap wrap--wide">
+            <div class="footer__grid">
+                <div>
+                    <p class="footer__brand">
+                        <span class="nav__mark" aria-hidden="true">菲</span>
+                        关注塔菲谢谢喵
+                    </p>
+                    <p class="footer__note">
+                        雏草姬自建的永雏塔菲应援站。<br />
+                        本站与永雏塔菲无直接关联 · 信息源自萌娘百科等公开资料。
+                    </p>
+                </div>
+
+                <div class="footer__col">
+                    <h4>站内</h4>
+                    <ul>
+                        <li><a href="#profile">塔菲档案</a></li>
+                        <li><a href="#timeline">活动历程</a></li>
+                        <li><a href="#songs">原创歌曲</a></li>
+                        <li><a href="#achievements">成就墙</a></li>
+                        <li><a href="#games2025">2025 游戏总结</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4>关注塔菲</h4>
+                    <ul>
+                        <li><a href="https://space.bilibili.com/1265680561" target="_blank" rel="noopener">B站空间</a></li>
+                        <li><a href="https://live.bilibili.com/22603245" target="_blank" rel="noopener">B站直播间</a></li>
+                        <li><a href="https://weibo.com/7618923072" target="_blank" rel="noopener">微博</a></li>
+                        <li><a href="https://twitter.com/AceTaffy812" target="_blank" rel="noopener">Twitter</a></li>
+                        <li><a href="https://www.youtube.com/channel/UC-WTKBWDsp0PFcGmmuO7svg" target="_blank" rel="noopener">YouTube</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4>本站</h4>
+                    <ul>
+                        <li><a href="#guestbook">应援留言板</a></li>
+                        <li><a href="#comments">评论区</a></li>
+                        <li><a href="#disclaimer">免责声明</a></li>
+                        <li><a href="https://github.com/ciallo0721-cmd/tf" target="_blank" rel="noopener">GitHub 仓库</a></li>
+                        <li><a href="./feed.xml">RSS 订阅</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>
+                    © <span id="year">2026</span> 关注塔菲谢谢喵 · 站长 ciallo0721-cmd · 用
+                    <span class="footer__heart" aria-hidden="true">♥</span> 与游标卡尺搭建
+                </p>
+                <div class="footer__platforms">
+                    <a href="https://space.bilibili.com/1265680561" target="_blank" rel="noopener">Bilibili</a>
+                    <a href="https://weibo.com/7618923072" target="_blank" rel="noopener">微博</a>
+                    <a href="https://twitter.com/AceTaffy812" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://github.com/ciallo0721-cmd/tf" target="_blank" rel="noopener">GitHub</a>
                 </div>
             </div>
         </div>
-
-        <!-- ========== 免责与版权声明 ========== -->
-        <div class="section" id="disclaimer">
-            <div class="section-title">免责与版权声明</div>
-            <div class="story" style="font-size:0.95rem; line-height:1.9;">
-                <p><strong>非官方性质声明</strong><br>
-                本站（关注塔菲谢谢喵）是由粉丝自发建立和维护的非盈利性应援站点，并非永雏塔菲或上海澈诺（CherryNova）的官方网站。本站与永雏塔菲及其所属机构无任何直接关联、隶属或商业合作关系。</p>
-
-                <p><strong>知识产权与版权声明</strong><br>
-                本站内使用的所有与永雏塔菲相关的立绘、Logo、视频截图、设定图等素材，其版权均归属于永雏塔菲、上海澈诺或原作者所有。本站仅基于 <a href="https://zh.wikipedia.org/wiki/%E5%90%88%E7%90%86%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener">合理使用</a> 原则，用于整理、介绍与评论目的。<br>
-                除特别声明外，本站原创文字内容采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="noopener">知识共享 署名-相同方式共享 4.0 国际许可协议 (CC BY-SA 4.0)</a> 授权。转载时请务必注明出处。</p>
-
-                <p><strong>内容准确性</strong><br>
-                本站内容由粉丝编辑整理，属于用户生成内容 (UGC)。我们尽力确保信息准确，但不对内容的真实性、完整性或及时性做出任何保证。因使用本站信息而产生的任何损失，本站管理组不承担法律责任。</p>
-
-                <p><strong>第三方链接</strong><br>
-                本站可能包含指向第三方网站（如 Bilibili、微博、萌娘百科等）的链接，其内容与隐私策略不受本站控制，点击风险由用户自行承担。</p>
-            </div>
-        </div>
-        <!-- ========== 免责结束 ========== -->
-
-        <!-- ===== Giscus 评论区 ===== -->
-        <div class="section" id="comments">
-            <div class="section-title">💬 评论区</div>
-            <div class="giscus-wrapper">
-                <div id="giscus-container"></div>
-            </div>
-        </div>
-
-    </div>
-
-    <footer>
-        关注塔菲谢谢喵 雏草姬应援站<br>
-        本站与永雏塔菲无直接关联 · 粉丝自建 · 信息源自萌娘百科<br>
-        &copy; <span id="year">2026</span> · 站长：ciallo0721-cmd · 仓库：<a href="https://github.com/ciallo0721-cmd/tf" target="_blank">GitHub</a>
     </footer>
 
-    <script src="./assets/enhanced.js"></script>
+    <!-- ================= Dock ================= -->
+    <div class="dock">
+        <div class="dock__group">
+            <div class="audio-panel" id="audioPanel" role="dialog" aria-label="播放器">
+                <p class="audio-panel__title">关注塔菲谢谢喵</p>
+                <p class="audio-panel__sub">原创应援曲 · 播放中</p>
+                <div class="audio-panel__times">
+                    <span id="audio-current">0:00</span>
+                    <span id="audio-duration">0:00</span>
+                </div>
+                <input type="range" class="rng" id="audio-seek" min="0" max="100" value="0" aria-label="播放进度" />
+                <div class="audio-panel__row">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M5 9.5h3l4-3.5v12l-4-3.5H5z" />
+                        <path d="M16.5 9a4 4 0 010 6" />
+                    </svg>
+                    <input type="range" class="rng" id="audio-volume" min="0" max="1" step="0.05" value="0.5" aria-label="音量" />
+                </div>
+            </div>
 
-    <!-- ===== Giscus 评论区脚本 ===== -->
+            <button class="dock__btn dock__btn--caret" id="audioCaret" aria-label="展开播放器" aria-expanded="false" title="播放器设置">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M6 15l6-6 6 6" />
+                </svg>
+            </button>
+
+            <button class="dock__btn dock__btn--brand" id="audio-btn" aria-label="播放或暂停背景音乐" title="播放 / 暂停">
+                <svg viewBox="0 0 24 24" id="audioIcon" aria-hidden="true">
+                    <path d="M8.5 5.5l10 6.5-10 6.5z" />
+                </svg>
+                <svg class="dock__ring" viewBox="0 0 44 44" aria-hidden="true">
+                    <circle class="track" cx="22" cy="22" r="20.6" />
+                    <circle class="fill" cx="22" cy="22" r="20.6" id="audioRing" />
+                </svg>
+            </button>
+
+            <button class="dock__btn is-hidden" id="backToTop" aria-label="返回顶部" title="返回顶部">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 19V5M6 11l6-6 6 6" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- ================= 命令面板 ================= -->
+    <div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="站内搜索" aria-hidden="true">
+        <div class="palette__panel">
+            <div class="palette__field">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7" />
+                    <path d="M20 20l-3.5-3.5" />
+                </svg>
+                <input type="text" id="palette-input" placeholder="搜索塔菲档案、历程、游戏、趣闻…" autocomplete="off"
+                    spellcheck="false" aria-label="搜索关键词" />
+                <span class="palette__esc">ESC</span>
+            </div>
+            <div class="palette__list" id="palette-list" role="listbox" aria-label="搜索结果"></div>
+            <div class="palette__foot">
+                <span><kbd>↑</kbd><kbd>↓</kbd> 选择</span>
+                <span><kbd>Enter</kbd> 跳转</span>
+                <span><kbd>Esc</kbd> 关闭</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Lightbox ================= -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="图片查看" aria-hidden="true">
+        <button class="lightbox__close" id="lightboxClose" aria-label="关闭">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </button>
+        <img id="lightbox-img" alt="" />
+        <p class="lightbox__cap" id="lightbox-cap"></p>
+    </div>
+
+    <audio id="bgm" loop preload="metadata">
+        <source src="./gztfxxm.MP3" type="audio/mpeg" />
+        您的浏览器不支持音频播放
+    </audio>
+
+    <script src="./assets/app.js" defer></script>
+
+    <!-- Giscus 评论区 -->
     <script>
         (function initGiscus() {
             var container = document.getElementById('giscus-container');
             if (!container) return;
+            var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
             var script = document.createElement('script');
             script.src = 'https://giscus.app/client.js';
             script.setAttribute('data-repo', 'ciallo0721-cmd/tf');
@@ -1449,7 +1428,7 @@
             script.setAttribute('data-reactions-enabled', '1');
             script.setAttribute('data-emit-metadata', '0');
             script.setAttribute('data-input-position', 'bottom');
-            script.setAttribute('data-theme', 'light');
+            script.setAttribute('data-theme', isDark ? 'dark' : 'light');
             script.setAttribute('data-lang', 'zh-CN');
             script.setAttribute('crossorigin', 'anonymous');
             script.async = true;
@@ -1457,104 +1436,16 @@
         })();
     </script>
 
-    <!-- ===== PWA Service Worker 注册 ===== -->
+    <!-- PWA -->
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
-                navigator.serviceWorker.register('./sw.js').then(function (reg) {
-                    console.log('PWA: Service Worker 注册成功', reg.scope);
-                }).catch(function (err) {
+                navigator.serviceWorker.register('./sw.js').catch(function (err) {
                     console.log('PWA: Service Worker 注册失败', err);
                 });
             });
         }
     </script>
-
-    <!-- ===== 站内搜索脚本 ===== -->
-    <script>
-        (function () {
-            var input = document.getElementById('search-input');
-            var results = document.getElementById('search-results');
-            if (!input || !results) return;
-
-            input.addEventListener('input', function () {
-                var query = input.value.trim().toLowerCase();
-                if (!query || query.length < 1) {
-                    results.style.display = 'none';
-                    return;
-                }
-
-                // Use Fuse if available
-                if (window.__fuse) {
-                    var fuseResults = window.__fuse.search(query);
-                    if (fuseResults.length === 0) {
-                        results.innerHTML = '<a style="color:#aaa;cursor:default;">没有找到相关内容</a>';
-                        results.style.display = 'block';
-                        return;
-                    }
-                    var html = '';
-                    fuseResults.slice(0, 10).forEach(function (r) {
-                        var item = r.item;
-                        var title = item.title + (item.id ? ' - ' + item.id : '');
-                        var preview = item.text.substring(0, 80);
-                        var href = item.id ? '#' + item.id : '#';
-                        html += '<a href="' + href + '">' +
-                            '<div class="result-title">' + escapeSearch(item.title) + '</div>' +
-                            '<div class="result-preview">' + escapeSearch(preview) + '</div>' +
-                            '</a>';
-                    });
-                    results.innerHTML = html;
-                    results.style.display = 'block';
-                } else {
-                    // Fallback: basic local search
-                    var data = window.__searchData || [];
-                    var matches = [];
-                    data.forEach(function (item) {
-                        if (item.title.toLowerCase().indexOf(query) !== -1 ||
-                            item.text.toLowerCase().indexOf(query) !== -1) {
-                            matches.push(item);
-                        }
-                    });
-                    if (matches.length === 0) {
-                        results.innerHTML = '<a style="color:#aaa;cursor:default;">没有找到相关内容</a>';
-                        results.style.display = 'block';
-                        return;
-                    }
-                    var html = '';
-                    matches.slice(0, 10).forEach(function (item) {
-                        var href = item.id ? '#' + item.id : '#';
-                        html += '<a href="' + href + '">' +
-                            '<div class="result-title">' + escapeSearch(item.title) + '</div>' +
-                            '<div class="result-preview">' + escapeSearch(item.text.substring(0, 80)) + '</div>' +
-                            '</a>';
-                    });
-                    results.innerHTML = html;
-                    results.style.display = 'block';
-                }
-            });
-
-            document.addEventListener('click', function (e) {
-                if (!input.contains(e.target) && !results.contains(e.target)) {
-                    results.style.display = 'none';
-                }
-            });
-
-            // Click result to close and scroll
-            results.addEventListener('click', function (e) {
-                var link = e.target.closest('a');
-                if (link && link.getAttribute('href') !== '#') {
-                    results.style.display = 'none';
-                    input.value = '';
-                }
-            });
-
-            function escapeSearch(text) {
-                if (!text) return '';
-                var d = document.createElement('div');
-                d.textContent = text;
-                return d.innerHTML;
-            }
-        })();
-    </script>
 </body>
+
 </html>

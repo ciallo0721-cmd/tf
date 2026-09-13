@@ -1,48 +1,113 @@
-const CACHE_NAME = 'taffy-fansite-v1';
-const PRECACHE_URLS = [
-  '/',
-  '/index.html',
-  './assets/enhanced.js',
+/**
+ * 关注塔菲谢谢喵 · Service Worker
+ * 策略：
+ *   - 应用外壳（HTML/CSS/JS/图标）：安装时预缓存
+ *   - 页面导航：网络优先，离线回退缓存
+ *   - 图片 / 音频：缓存优先（后台更新 + LRU 裁剪）
+ */
+
+const CACHE = 'taffy-fansite-v2';
+const MEDIA_CACHE = 'taffy-media-v1';
+const MEDIA_LIMIT = 40;
+
+const PRECACHE = [
+  './',
+  './index.html',
+  './assets/style.css',
+  './assets/app.js',
   './avatar.webp',
   './cover.webp',
-  './Taffy_illust.png',
   './xiaofei.webp',
-  './gztfxxm.MP3',
-  '/manifest.json'
+  './assets/taffy-illust-tiny.webp',
+  './manifest.json'
 ];
 
-// Install: cache all precache resources
-self.addEventListener('install', event => {
+self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(PRECACHE_URLS);
-    }).then(() => self.skipWaiting())
+    caches.open(CACHE)
+      .then((cache) => Promise.all(
+        PRECACHE.map((url) => cache.add(url).catch(() => null))
+      ))
+      .then(() => self.skipWaiting())
   );
 });
 
-// Activate: clean old caches
-self.addEventListener('activate', event => {
+self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then(names => {
-      return Promise.all(
-        names.filter(name => name !== CACHE_NAME)
-          .map(name => caches.delete(name))
-      );
-    }).then(() => self.clients.claim())
+    caches.keys()
+      .then((names) => Promise.all(
+        names
+          .filter((n) => n !== CACHE && n !== MEDIA_CACHE)
+          .map((n) => caches.delete(n))
+      ))
+      .then(() => self.clients.claim())
   );
 });
 
-// Fetch: network first, fallback to cache
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    fetch(event.request)
-      .then(response => {
-        const clone = response.clone();
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(event.request, clone);
+/** 限制媒体缓存条目数量（删除最早的条目） */
+async function trimMedia() {
+  const cache = await caches.open(MEDIA_CACHE);
+  const keys = await cache.keys();
+  if (keys.length <= MEDIA_LIMIT) return;
+  await Promise.all(keys.slice(0, keys.length - MEDIA_LIMIT).map((k) => cache.delete(k)));
+}
+
+self.addEventListener('fetch', (event) => {
+  const req = event.request;
+  if (req.method !== 'GET') return;
+
+  const url = new URL(req.url);
+  if (url.origin !== self.location.origin) return; // 第三方（GA / Giscus）交给浏览器
+
+  // 页面导航：网络优先
+  if (req.mode === 'navigate') {
+    event.respondWith(
+      fetch(req)
+        .then((res) => {
+          const copy = res.clone();
+          caches.open(CACHE).then((c) => c.put('./index.html', copy));
+          return res;
+        })
+        .catch(() => caches.match('./index.html').then((r) => r || caches.match('./')))
+    );
+    return;
+  }
+
+  // 图片 / 音频：缓存优先
+  if (/\.(?:webp|png|jpe?g|svg|gif|mp3|m4a|ogg|wav)$/i.test(url.pathname)) {
+    event.respondWith(
+      caches.match(req).then((hit) => {
+        if (hit) {
+          fetch(req).then((res) => {
+            if (res && res.ok) {
+              caches.open(MEDIA_CACHE).then((c) => c.put(req, res)).then(trimMedia);
+            }
+          }).catch(() => { });
+          return hit;
+        }
+        return fetch(req).then((res) => {
+          if (res && res.ok) {
+            const copy = res.clone();
+            caches.open(MEDIA_CACHE).then((c) => c.put(req, copy)).then(trimMedia);
+          }
+          return res;
         });
-        return response;
       })
-      .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
+  // 其余同源资源：缓存优先 + 后台更新
+  event.respondWith(
+    caches.match(req).then((hit) => {
+      const network = fetch(req).then((res) => {
+        if (res && res.ok) {
+          const copy = res.clone();
+          caches.open(CACHE).then((c) => c.put(req, copy));
+        }
+        return res;
+      }).catch(() => hit);
+      return hit || network;
+    })
   );
 });
