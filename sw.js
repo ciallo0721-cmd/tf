@@ -6,7 +6,7 @@
  *   - 图片 / 音频：缓存优先（后台更新 + LRU 裁剪）
  */
 
-const CACHE = 'taffy-fansite-v2';
+const CACHE = 'taffy-fansite-v3';
 const MEDIA_CACHE = 'taffy-media-v1';
 const MEDIA_LIMIT = 40;
 
@@ -59,16 +59,16 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return; // 第三方（GA / Giscus）交给浏览器
 
-  // 页面导航：网络优先
+  // 页面导航：网络优先（按真实 URL 缓存，避免子页面污染首页缓存键）
   if (req.mode === 'navigate') {
     event.respondWith(
       fetch(req)
         .then((res) => {
           const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put('./index.html', copy));
+          caches.open(CACHE).then((c) => c.put(req, copy));
           return res;
         })
-        .catch(() => caches.match('./index.html').then((r) => r || caches.match('./')))
+        .catch(() => caches.match(req).then((r) => r || caches.match('./index.html')).then((r) => r || caches.match('./')))
     );
     return;
   }

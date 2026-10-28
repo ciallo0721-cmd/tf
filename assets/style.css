@@ -3722,3 +3722,84 @@ html.js [data-reveal="stagger"].is-in > * {
         border: 1px solid #ddd;
     }
 }
+
+/* ===== 子页面（拆页）===== */
+.page-hero {
+    padding-top: clamp(105px, 15vw, 160px);
+    padding-bottom: clamp(6px, 2vw, 16px);
+}
+
+.page-h1 {
+    font-size: clamp(32px, 5.2vw, 52px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -.03em;
+    color: var(--text);
+    margin: 10px 0 14px;
+}
+
+.page-h1 b {
+    font-weight: 800;
+    background: var(--brand-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.page-crumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: .06em;
+    color: var(--text-3);
+    margin-bottom: 6px;
+}
+
+.page-crumb a {
+    color: var(--accent);
+}
+
+.page-crumb span {
+    opacity: .5;
+}
+
+.page-intro p + p {
+    margin-top: 12px;
+}
+
+.page-sec-tight {
+    padding-top: 0;
+}
+
+.page-sub-tight {
+    margin-bottom: 0;
+}
+
+.page-next {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.page-next a {
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 18px;
+    border-radius: var(--r-pill);
+    border: 1px solid var(--hairline);
+    background: var(--surface);
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--text-2);
+    transition: .2s;
+}
+
+.page-next a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
